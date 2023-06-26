@@ -104,6 +104,7 @@ body {
   width: 15rem; 
   background-color: var(--cafeSemiOscuro);
   border-radius: 1rem;
+  box-shadow: inset 0 0 0.4rem 0.1rem rgba(0, 0, 0, 0.3);
 }
 
 .box-button h3{
@@ -112,6 +113,7 @@ body {
   color: white;
   font-weight: 550;
 }
+
 /*Contenido*/
 .content{
   opacity: 60%;
