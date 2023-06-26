@@ -1,11 +1,9 @@
 import React from 'react'
-import { BarraNav } from './Componentes/Seguridad/BarraNav';
+import { Router } from './routers/Router';
 //import Login from './Componentes/seguridad/Login';
 function App() {
   return (
-    <div>
-      <BarraNav/>
-    </div>
+    <Router/>
   );
 }
 export default App;
