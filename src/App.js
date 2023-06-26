@@ -1,15 +1,10 @@
 import React from 'react'
-
-
-import Login from './Componentes/Seguridad/Login';
-
+import { BarraNav } from './Componentes/Seguridad/BarraNav';
 //import Login from './Componentes/seguridad/Login';
 function App() {
-  
-
   return (
     <div>
-      <Login/>
+      <BarraNav/>
     </div>
   );
 }

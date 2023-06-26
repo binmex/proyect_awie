@@ -1,13 +1,83 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+:root{
+  --fontLogo: 'Dancing Script', cursive;
+  --fontDefault: 'Noto Sans', sans-serif;
+  --crema: #f5e5c1;
+  --cafe: #5D4717;
+  --cafeClaro: #AF8155;
+  --cafeSemiOscuro: #976F49;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
 }
+
+.header {
+  background-color: var(--crema);
+  display: flex;
+  align-items: center;
+  height: 132px;
+  margin-bottom: 20px;
+}
+
+.header .logo {
+  padding-left: 2rem;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+.header .logo span {
+  display: flex;
+  font-size: 90px;
+  font-weight: bolder;
+  margin-top: -10px;
+}
+
+.header .logo h3 {
+  font-family: var(--fontLogo);
+  font-size: xx-large;
+  color: var(--cafe);
+  display: flex;
+  margin-left: 10px;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+.header .nav {
+  flex-grow: 2;
+}
+
+.header nav ul {
+  height: 132px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 1rem;
+  list-style: none;
+}
+
+.header li {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 17px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.header li a {
+  font-family: var(--fontDefault);
+  padding-right: 5rem;
+  color: #1a1a1a;
+  transition: all 300ms;
+  text-decoration: none;
+}
+.header .active,
+.header a:hover {
+  color: #e0ad18;
+}
+.app-logo{
+  height: 80px;
+}
+
