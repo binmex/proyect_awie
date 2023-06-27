@@ -1,28 +1,30 @@
 import React from 'react';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import style from '../Tool/Style'
-import { Avatar, Button, Container , TextField, Typography} from '@mui/material';
+import logo from '../Assets/logoCafe.svg';
+
 const Login=()=>{
 
 return(
-  <Container maxWidth="xs">
-<div style={style.paper}>
-<Avatar style={style.avatar}>
-   <LockOutlinedIcon style={style.icon}/> 
-</Avatar>
-<Typography component="h1" variant="h5">
- El sitio del tinto  
-</Typography>
-<form style={style.form}>
+  <div className='container'>
+  <div className="login">
+   
+   <span>
+     <img src={logo} alt='logo' className='app-logo'/>
+     </span>
+  <form>
+    <div class="form-group">
 
-<TextField variant="outlined" label="Ingrese su Usuario" name="username" fullWidth margin="normal"/>
-<TextField variant="outlined" type="password" label="Ingrese su Constraseña" name="password" fullWidth margin="normal"/>
-<Button type="submit" fullWidth variant ="contained" color="primary" style={style.submit}>
-    Enviar 
-</Button>
-</form>
+      <input type="text" id="username" name="username" />
+    </div>
+    <div class="form-group">
+      
+      <input type="password" id="password" name="password"/>
+    </div>
+    <button type="submit">Login</button>
+  </form>
 </div>
-  </Container>  
+</div>
 )
  }
  export default Login;
+
+ 
