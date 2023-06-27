@@ -13,6 +13,7 @@ const Login = () => {
         <form>
           <div className="form-group">
 
+            <span className="pi pi-user-plus"></span>
             <input type="text" id="username" name="username" className='formcaja' />
           </div>
           <div className="form-group">

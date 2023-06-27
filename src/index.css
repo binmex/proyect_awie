@@ -14,7 +14,65 @@
 body {
   margin: 0;
 }
-/*header o barra de navegacion*/
+ /*Login*/
+ .container{
+  display: flex;
+  height: 100%;
+  min-height: 606px;
+  justify-content: center;
+  align-items: center; /* Alineación vertical */
+}
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6%;
+  background-color: var(--crema);
+  height: 50%;
+  padding: 70px 50px 70px 50px;
+  box-shadow: 10px 2px 4px rgba(0, 0, 0, 0.4);
+  
+}
+.logologin{
+  display: inline-block;
+  width: 160px; 
+}
+.login form{
+  display: flex;
+  flex-Direction:column;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.but_login{
+  padding: 6px 30px;
+  font-size: 1rem;
+  color: white;
+  font-family: var(--fontDefault);
+ background-color: var(--cafeOscuro);
+ border-radius: 10px;
+ 
+}
+
+.form-group{
+  padding:30px;
+  
+  
+}
+.formcaja{
+  font-size: 29px;
+  border-radius: 9px;
+  border:none;
+}
+.form-group span{
+  font-size: 2rem;
+  color: var(--cafeOscuro);
+  padding-right: 1rem;
+}
+/*header o barra de navegacion}
+*/
 .header {
   background-color: var(--crema);
   display: flex;
@@ -166,66 +224,11 @@ body {
   font-size: 4rem;
   color: var(--cafe);
 }
-
-/*Login*/
 .container{
   display: flex;
-  height: 100%;
-  min-height: 606px;
   justify-content: center;
-  align-items: center; /* Alineación vertical */
+  margin: auto;
 }
-.login {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 6%;
-  background-color: var(--crema);
-  height: 50%;
-  padding: 70px 50px 70px 50px;
-  box-shadow: 10px 2px 4px rgba(0, 0, 0, 0.4);
-  
-}
-.logologin{
-  display: inline-block;
-  width: 160px; 
-}
-.login form{
-  display: flex;
-  flex-Direction:column;
-  justify-content: center;
-  align-items: center;
-  
-}
-
-.but_login{
-  padding: 6px 30px;
-  font-size: 1rem;
-  color: white;
-  font-family: var(--fontDefault);
- background-color: var(--cafeOscuro);
- border-radius: 10px;
- 
-}
-
-.form-group{
-<<<<<<< HEAD
-  padding:30px;
-  
-  
-}
-.formcaja{
-  font-size: 29px;
-  border-radius: 9px;
-  border:none;
-}
-=======
-  padding:20px
-}
-
-
-
 
 /*
 Estilos pagina no encontrada
@@ -297,4 +300,3 @@ Estilos pagina no encontrada
   border-color:none; 
   border-bottom:2px solid #ccc;
   }
->>>>>>> 36efd18930eb09cbe990fd97e93d84f1cfbe9f6a
