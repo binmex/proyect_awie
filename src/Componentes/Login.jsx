@@ -1,30 +1,29 @@
 import React from 'react';
 import logo from '../Assets/logoCafe.svg';
 
-const Login=()=>{
+const Login = () => {
 
-return(
-  <div className='container'>
-  <div className="login">
-   
-   <span>
-     <img src={logo} alt='logo' className='app-logo'/>
-     </span>
-  <form>
-    <div class="form-group">
+  return (
+    <div className='container'>
+      <div className="login">
 
-      <input type="text" id="username" name="username" />
+        <span>
+          <img src={logo} alt='logo' className='logologin' />
+        </span>
+        <form>
+          <div className="form-group">
+
+            <input type="text" id="username" name="username" className='formcaja' />
+          </div>
+          <div className="form-group">
+
+            <input type="password" id="password" name="password" className='formcaja' />
+          </div>
+          <button className='but_login' type="submit">Login</button>
+        </form>
+      </div>
     </div>
-    <div class="form-group">
-      
-      <input type="password" id="password" name="password"/>
-    </div>
-    <button type="submit">Login</button>
-  </form>
-</div>
-</div>
-)
- }
- export default Login;
+  )
+}
+export default Login;
 
- 
