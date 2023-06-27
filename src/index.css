@@ -90,11 +90,10 @@ body {
 /*Barra lateral*/
 .layout{
   width: 100%;
-  height: 81.5vh; /* Usamos 100vh para ocupar todo el alto visible en la ventana */
   display: grid;
   grid-template-areas:
     "lateral content";
-  grid-template-rows: 100%; /* Cambiamos las filas para que ocupen todo el espacio disponible */
+  grid-template-rows: auto 1fr; /* Cambiamos las filas para que ocupen todo el espacio disponible */
   grid-template-columns: 20% 80%;
 }
 
@@ -102,17 +101,18 @@ body {
   grid-area: lateral;
   background: var(--cafeClaro);
   display: flex;
-  flex-direction: column; /* Alinear elementos verticalmente */
-  /*justify-content: center; /* Alinear elementos horizontalmente al centro */
-  align-items: center; /* Alinear elementos verticalmente al centro */
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 3.3rem;
 }
 
-/*lateral con cajas de botones*/
 .box-button {
   display: flex;
   flex-direction: column;
+  min-width: 120px;
+  width: 80%; /* Adaptarse al tamaño de lateral en lo ancho */
   margin-top: 2rem;
-  min-width: 200px; 
+  flex-grow: 1; /* Ocupar todo el espacio vertical disponible */
   background-color: var(--cafeSemiOscuro);
   border-radius: 1rem;
   box-shadow: inset 0 0 0.4rem 0.1rem rgba(0, 0, 0, 0.3);
@@ -210,6 +210,7 @@ body {
 }
 
 .form-group{
+<<<<<<< HEAD
   padding:30px;
   
   
@@ -219,3 +220,81 @@ body {
   border-radius: 9px;
   border:none;
 }
+=======
+  padding:20px
+}
+
+
+
+
+/*
+Estilos pagina no encontrada
+*/
+.bodyNofound {
+  margin: 0;
+  padding: 0;
+  background-color: #0a1821;
+  height: 100vh;
+  width: 100vw;
+  font-family: Roboto, Arial, sans-serif;
+  color: #fff;
+  text-align: center;
+}
+.not-found {
+  width: 560px;
+  height: 225px;
+  margin-right: -10px;
+}
+.starry-sky {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+.search-icon {
+  display: inline-block;
+}
+.notfound-copy {
+  color: #fff;
+  position: fixed;
+  top: 25px;
+  right: 10%;
+  text-align: right;
+}
+.noFoundH1 {
+   font-weight: 700;
+  font-size: 40px;
+}
+.linkNofound {
+  font-weight: 300;
+  color: #fff;
+  border-bottom: 1.5px solid #5581d4;
+  text-decoration: none;
+}
+.linkNofound:hover {
+  font-weight: 300;
+  color: #fff;
+  border-bottom: 2px solid #fff;
+  text-decoration: none;
+}
+/* change to alternating star opacities */
+.all-stars {
+  animation: blinkblink 7s linear infinite;
+}
+
+@keyframes blinkblink {  
+  50% { opacity: 0.1; }
+}
+.noFoundInput {
+  color: #fff;
+  background-color: #0a1821;
+  padding:5px; 
+  border: none; 
+  border-bottom:2px solid #ccc; 
+  font-size: 18px;
+}
+.noFoundInput:focus {
+  border-color:none; 
+  border-bottom:2px solid #ccc;
+  }
+>>>>>>> 36efd18930eb09cbe990fd97e93d84f1cfbe9f6a

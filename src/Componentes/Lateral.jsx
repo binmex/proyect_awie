@@ -9,7 +9,7 @@ export const Lateral = () => {
         <ul>
           <li>
             <NavLink
-              to={"/inicio"}
+              to={"/agregar"}
               className={({ isActive }) =>
                 isActive === true ? "active" : "inactive"
               }
@@ -20,7 +20,7 @@ export const Lateral = () => {
           </li>
           <li>
             <NavLink
-              to={"/inicio"}
+              to={"/modificar"}
               className={({ isActive }) =>
                 isActive === true ? "active" : "link"
               }
@@ -31,7 +31,7 @@ export const Lateral = () => {
           </li>
           <li>
             <NavLink
-              to={"/inicio"}
+              to={"/eliminar"}
               className={({ isActive }) => (isActive === true ? "active" : "")}
             >
               <span className="pi pi-trash" />
@@ -40,7 +40,7 @@ export const Lateral = () => {
           </li>
           <li>
             <NavLink
-              to={"/inicio"}
+              to={"/consultar"}
               className={({ isActive }) => (isActive === true ? "active" : "")}
             >
               <span className="pi pi-search" />
