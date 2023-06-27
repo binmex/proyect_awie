@@ -8,6 +8,7 @@
   --cafe: #5D4717;
   --cafeClaro: #AF8155;
   --cafeSemiOscuro: #976F49;
+  --cafeOscuro: #342609;
 }
 
 body {
@@ -21,7 +22,7 @@ body {
   height: 132px;
 }
 .app-logo{
-  height: 100px;
+  height: 80px;
 }
 .header .logo {
   padding-left: 2rem;
@@ -62,19 +63,27 @@ body {
   font-weight: bold;
   font-size: 17px;
   margin-left: 15px;
-  margin-right: 15px;
+  margin-right: 3rem;
 }
 
 .header li a {
   font-family: var(--fontDefault);
-  padding-right: 5rem;
+  padding-right: 1rem;
   color: var(--cafe);
   transition: all 300ms;
   text-decoration: none;
 }
+.header li a span{
+  padding-left: .5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: all 100ms;
+  text-decoration: none;
+}
+.header li a span:hover,
 .header .active,
 .header a:hover {
-  color: #e0ad18;
+  color: red;
 }
 
 /*Barra lateral*/
@@ -97,22 +106,46 @@ body {
   align-items: center; /* Alinear elementos verticalmente al centro */
 }
 
+/*lateral con cajas de botones*/
 .box-button {
   display: flex;
   flex-direction: column;
   margin-top: 2rem;
-  width: 15rem; 
+  min-width: 200px; 
   background-color: var(--cafeSemiOscuro);
   border-radius: 1rem;
   box-shadow: inset 0 0 0.4rem 0.1rem rgba(0, 0, 0, 0.3);
 }
 
 .box-button h3{
-  margin: 0.5rem 0 0 1rem ;
+  margin: 1rem 0 0 1rem ;
   font-family: var(--fontDefault);
   color: white;
   font-weight: 550;
 }
+.box-button ul{
+  margin-left: 1rem;
+  padding-left: 0;
+}
+.box-button ul li {
+  color: white;
+  list-style: none;
+  margin-bottom: .3rem;  
+}
+.box-button ul li a{
+  color: white;
+  text-decoration: none;
+  font-family: var(--fontDefault);  
+}
+
+.box-button ul li .active,
+.box-button ul li a:hover {
+  color: var(--cafeOscuro);
+}
+.box-button ul li span{
+  padding-right: 1rem;
+}
+
 
 /*Contenido*/
 .content{
@@ -123,12 +156,12 @@ body {
   align-items: center;
   justify-content: center;
 }
-.content img{
-  width: 35%;
+.content .logoMain{
+  width: 30%;
 }
-.content h3{
+.content .textLogo{
   font-family: var(--fontLogo);
   margin: 0 ;
-  font-size: 5rem;
+  font-size: 4rem;
   color: var(--cafe);
 }

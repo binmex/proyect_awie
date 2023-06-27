@@ -14,7 +14,7 @@ export const BarraNav = () => {
       <nav>
         <ul>
           <li>
-            <a href='/#'>Cerrar sesion</a>
+            <a href='/#'>Cerrar sesion <span className="pi pi-sign-out"/> </a>
           </li>
         </ul>
       </nav>

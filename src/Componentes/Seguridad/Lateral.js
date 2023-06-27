@@ -10,16 +10,22 @@ export const Lateral = () => {
           <li>
             <NavLink
               to={"/inicio"}
-              className={({ isActive }) => (isActive === true ? "active" : "")}
+              className={({ isActive }) =>
+                isActive === true ? "active" : "inactive"
+              }
             >
+              <span className="pi pi-plus" />
               Agregar
             </NavLink>
           </li>
           <li>
             <NavLink
               to={"/inicio"}
-              className={({ isActive }) => (isActive === true ? "active" : "")}
+              className={({ isActive }) =>
+                isActive === true ? "active" : "link"
+              }
             >
+              <span className="pi pi-pencil" />
               Modificar
             </NavLink>
           </li>
@@ -28,6 +34,7 @@ export const Lateral = () => {
               to={"/inicio"}
               className={({ isActive }) => (isActive === true ? "active" : "")}
             >
+              <span className="pi pi-trash" />
               Eliminar
             </NavLink>
           </li>
@@ -36,6 +43,7 @@ export const Lateral = () => {
               to={"/inicio"}
               className={({ isActive }) => (isActive === true ? "active" : "")}
             >
+              <span className="pi pi-search" />
               Consultar
             </NavLink>
           </li>
@@ -49,6 +57,7 @@ export const Lateral = () => {
               to={"/inicio"}
               className={({ isActive }) => (isActive === true ? "active" : "")}
             >
+              <span className="pi pi-chart-bar" />
               Rotacion
             </NavLink>
           </li>
@@ -57,6 +66,7 @@ export const Lateral = () => {
               to={"/inicio"}
               className={({ isActive }) => (isActive === true ? "active" : "")}
             >
+              <span className="pi pi-wallet" />
               Ganancias
             </NavLink>
           </li>
@@ -70,6 +80,7 @@ export const Lateral = () => {
               to={"/inicio"}
               className={({ isActive }) => (isActive === true ? "active" : "")}
             >
+              <span className="pi pi-file" />
               Generar
             </NavLink>
           </li>
@@ -78,6 +89,7 @@ export const Lateral = () => {
               to={"/inicio"}
               className={({ isActive }) => (isActive === true ? "active" : "")}
             >
+              <span className="pi pi-eye" />
               Visualizar
             </NavLink>
           </li>
