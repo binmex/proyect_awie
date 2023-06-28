@@ -67,9 +67,9 @@ body {
   border:none;
 }
 .form-group span{
-  font-size: 2rem;
+  font-size: 38px;
   color: var(--cafeOscuro);
-  padding-right: 1rem;
+  padding-right: 15px;
 }
 /*header o barra de navegacion}
 */
