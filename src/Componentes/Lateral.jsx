@@ -72,7 +72,7 @@ export const Lateral = () => {
           </li>
         </ul>
       </div>
-      <div className="box-button">
+      <div className="box-button ventas">
         <h3>VENTAS</h3>
         <ul>
           <li>

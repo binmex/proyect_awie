@@ -146,22 +146,25 @@ body {
 }
 
 /*Barra lateral*/
-.layout{
+.layout {
+  position: relative;
+  height: 100%;
   width: 100%;
   display: grid;
   grid-template-areas:
     "lateral content";
-  grid-template-rows: auto 1fr; /* Cambiamos las filas para que ocupen todo el espacio disponible */
+  grid-template-rows: auto 1fr;
   grid-template-columns: 20% 80%;
 }
 
 .lateral {
+  position: relative;
+  height: 100%;
   grid-area: lateral;
   background: var(--cafeClaro);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 3.3rem;
 }
 
 .box-button {
@@ -174,6 +177,9 @@ body {
   background-color: var(--cafeSemiOscuro);
   border-radius: 1rem;
   box-shadow: inset 0 0 0.4rem 0.1rem rgba(0, 0, 0, 0.3);
+}
+ .ventas{
+  margin-bottom: 3.3rem;
 }
 
 .box-button h3{
