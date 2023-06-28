@@ -214,7 +214,6 @@ body {
 
 /*Contenido*/
 .content{
-  opacity: 60%;
   grid-area: content;
   display: flex;
   flex-direction: column;
@@ -222,6 +221,7 @@ body {
   justify-content: center;
 }
 .content .logoMain{
+  opacity: 60%;
   width: 30%;
 }
 .content .textLogo{

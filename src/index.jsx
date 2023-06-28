@@ -4,6 +4,11 @@ import './index.css';
 import './robin.css';
 import './lau.css'
 import 'primeicons/primeicons.css';
+//theme
+import "primereact/resources/themes/lara-light-indigo/theme.css";     
+    
+//core
+import "primereact/resources/primereact.min.css";  
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
