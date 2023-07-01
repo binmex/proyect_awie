@@ -10,3 +10,58 @@
   --cafeSemiOscuro: #976F49;
   --cafeOscuro: #342609;
 }
+/*boton modificar
+*/
+.botonMod{
+  margin-right: 1.5rem;
+  margin-left: 1rem;
+  background-color: blue;
+}
+.Modificar{
+  height: 70%;
+  width: 80%;
+  border-radius: 2rem;
+  box-shadow: 7px 11px 20px -1px rgba(0, 0, 0, 0.37);
+  
+}
+.Modificar h3{
+    font-family: var(--fontDefault);
+    color: var(--cafeOscuro);
+    text-align: center;
+    font-weight: bolder;
+}
+.eliminar{
+  height: 70%;
+  width: 80%;
+  border-radius: 2rem;
+  box-shadow: 7px 11px 20px -1px rgba(0, 0, 0, 0.37);
+
+}
+.boxBorrar{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px,;
+}
+.boxBorrar label {
+  font-family: var(--fontDefault);
+    font-weight: 400;
+    margin-right: 1rem;
+    
+}
+.boxBorrar Input{
+  font-size: 25px;
+  border: 1%;
+  margin-right: 1rem;
+
+
+}
+.boxBorrar button{
+  padding: 6px 30px;
+  font-size: 18px;
+  color: white;
+  font-family: var(--fontDefault);
+ background-color: rgb(11, 11, 82);
+ border-radius: 10px;
+ border:none;
+}

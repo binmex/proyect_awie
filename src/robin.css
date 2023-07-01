@@ -33,16 +33,20 @@
   display: grid;
   grid-template-rows: repeat(4, 1fr); /* Divide en 4 filas de tamaño igual */
   grid-template-columns: repeat(2, 1fr); /* Divide en 2 columnas de tamaño igual */
+  
 }
 .boxInput .inputAdd2,
 .boxInput .inputAdd{
     margin-left: 1.5rem;
     margin-top: 2rem;
+
+    
 }
 .boxInput .inputAdd label{
     font-family: var(--fontDefault);
     font-weight: 400;
     margin-right: 1rem;
+
 }
 .boxInput .inputAdd2{
     margin-right: 1.5rem;
