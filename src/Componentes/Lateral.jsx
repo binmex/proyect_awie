@@ -77,7 +77,7 @@ export const Lateral = () => {
         <ul>
           <li>
             <NavLink
-              to={"/inicio"}
+              to={"/generarFactura"}
               className={({ isActive }) => (isActive === true ? "active" : "")}
             >
               <span className="pi pi-file" />
@@ -86,7 +86,7 @@ export const Lateral = () => {
           </li>
           <li>
             <NavLink
-              to={"/inicio"}
+              to={"/visualizarFactura"}
               className={({ isActive }) => (isActive === true ? "active" : "")}
             >
               <span className="pi pi-eye" />

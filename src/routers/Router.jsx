@@ -13,6 +13,8 @@ import { EliminarPage } from "../pages/EliminarPage";
 import { ConsultarPage } from "../pages/ConsultarPage";
 import { RotacionPage } from "../pages/RotacionPage";
 import { GananciasPage } from "../pages/GananciasPage";
+import { GenerarPage } from "../pages/GenerarPage";
+import { VisualizarPage } from "../pages/VisualizarPage";
 
 export const Router = () => {
   return (
@@ -26,6 +28,8 @@ export const Router = () => {
           <Route path="/consultar" element={<ConsultarPage/>} />
           <Route path="/rotacion" element={<RotacionPage/>} />
           <Route path="/ganancias" element={<GananciasPage/>}/>
+          <Route path="/generarFactura" element={<GenerarPage/>}/>
+          <Route path="/visualizarFactura" element={<VisualizarPage/>}/>
           <Route path="*" element={<Error404/>}/>
         </Routes>
     </BrowserRouter>
