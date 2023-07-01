@@ -12,6 +12,7 @@ import { Error404 } from "../pages/Error404";
 import { EliminarPage } from "../pages/EliminarPage";
 import { ConsultarPage } from "../pages/ConsultarPage";
 import { RotacionPage } from "../pages/RotacionPage";
+import { GananciasPage } from "../pages/GananciasPage";
 
 export const Router = () => {
   return (
@@ -24,6 +25,7 @@ export const Router = () => {
           <Route path="/eliminar" element={<EliminarPage/>} />
           <Route path="/consultar" element={<ConsultarPage/>} />
           <Route path="/rotacion" element={<RotacionPage/>} />
+          <Route path="/ganancias" element={<GananciasPage/>}/>
           <Route path="*" element={<Error404/>}/>
         </Routes>
     </BrowserRouter>

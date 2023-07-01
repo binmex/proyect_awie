@@ -63,7 +63,7 @@ export const Lateral = () => {
           </li>
           <li>
             <NavLink
-              to={"/inicio"}
+              to={"/ganancias"}
               className={({ isActive }) => (isActive === true ? "active" : "")}
             >
               <span className="pi pi-wallet" />
