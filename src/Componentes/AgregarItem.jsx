@@ -7,16 +7,14 @@ import { Calendar } from "primereact/calendar";
 export const AgregarItem = () => {
   const [date, setDate] = useState(null);
   return (
-    <div className="content">
+    <div className="contenido">
       <div className="cajaAgregar">
         <h3>AGREGAR</h3>
+
         <div className="boxInput">
           <div className="inputAdd">
             <label>Nombre</label>
-            <InputText
-              type="text"
-              className="p-inputtext-sm"
-            />
+            <InputText type="text" className="p-inputtext-sm" />
           </div>
           <div className="inputAdd">
             <label>ID: </label>
@@ -24,7 +22,7 @@ export const AgregarItem = () => {
           </div>
           <div className="inputAdd">
             <label>Precio Compra: </label>
-            <InputNumber inputId="integeronly" />
+            <InputNumber inputId="integeronly"/>
           </div>
           <div className="inputAdd">
             <label>Precio Venta: </label>
@@ -42,7 +40,7 @@ export const AgregarItem = () => {
               showIcon
             />
           </div>
-          <div className="inputAdd2 button">
+          <div className="inputAdd button" id="boxButtonAdd">
             <Button label="Limpiar" severity="warning" />
             <Button label="Aceptar" severity="success" />
           </div>

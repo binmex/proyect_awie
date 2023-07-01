@@ -54,7 +54,7 @@ export const Lateral = () => {
         <ul>
           <li>
             <NavLink
-              to={"/inicio"}
+              to={"/rotacion"}
               className={({ isActive }) => (isActive === true ? "active" : "")}
             >
               <span className="pi pi-chart-bar" />
