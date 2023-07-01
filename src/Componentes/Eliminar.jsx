@@ -8,20 +8,18 @@ export const Eliminar = () => {
     <div className='content'>
         <div className='Modificar'>
           <h3>ELIMINAR</h3>
-         < div className='boxBorrar'>
+          < div className='boxBorrar'>
          <label>ID: </label>
          <input type="number" id="eliminar" name="eliminar" />
          <button  type="submit">Seleccionar</button>
           </div> 
           <div className="boxInput">
-        <div className="inputAdd">
+          <div className="inputAdd">
             <label>ID: </label>
             
           </div>
           <div className="inputAdd">
             <label>Nombre:</label>
-    
-        
           </div>
           
           <div className="inputAdd">
@@ -30,24 +28,20 @@ export const Eliminar = () => {
           </div>
           <div className="inputAdd">
             <label> Venta: </label>
-            
           </div>
           <div className="inputAdd">
             <label>Cantidad:</label>
-            
           </div>
           <div className="inputAdd">
             <label>Ingreso:</label>
-            
           </div>
           
-          <div className="inputAdd2 button">
+    <div className="imputBor">
             <Button label="Borrar" severity="danger" />
-          </div>
-        </div>
-          
-
-        </div>
+      </div>
+      </div>
+    </div>
+    
     </div>
   )
 }

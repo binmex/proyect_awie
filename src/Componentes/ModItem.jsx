@@ -44,7 +44,7 @@ export const ModItem = () => {
               showIcon
             />
           </div>
-          <div className="inputAdd2 button">
+          <div className="inputAdd button">
             <Button label="Limpiar" severity="warning" />
             <Button label="Actualizar" severity="info" />
           </div>

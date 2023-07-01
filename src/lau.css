@@ -18,7 +18,7 @@
   background-color: blue;
 }
 .Modificar{
-  height: 70%;
+  height: 80%;
   width: 80%;
   border-radius: 2rem;
   box-shadow: 7px 11px 20px -1px rgba(0, 0, 0, 0.37);
@@ -30,6 +30,12 @@
     text-align: center;
     font-weight: bolder;
 }
+.inputAdd button{
+  text-align: end;
+  grid-column: 2;
+  margin-right: 2.5rem;
+}
+/*eliminar*/
 .eliminar{
   height: 70%;
   width: 80%;
@@ -64,4 +70,11 @@
  background-color: rgb(11, 11, 82);
  border-radius: 10px;
  border:none;
+}
+
+.imputBor{
+
+  text-align: end;
+  grid-column: 2;
+  
 }
