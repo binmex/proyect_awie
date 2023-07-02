@@ -32,12 +32,12 @@ export const GananciasProducto = () => {
           <div className="boxInputGanancias">
             <div className="boxDato"></div>
             <div className="boxChart" id="bigChart">
-              <ChartRotacion1 tipo='line'/>
+              <ChartRotacion1 tipo='polarArea'/>
             </div>
             <div className="boxDato"></div>
             <div className="boxDato"></div>
             <div className="boxChart">
-              <ChartRotacion1 tipo='line' />
+              <ChartRotacion1 tipo='bar' />
             </div>
           </div>
         </div>

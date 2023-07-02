@@ -20,7 +20,7 @@ export const RotacionProducto = () => {
                 className="calen"
                 value={date}
                 onChange={(e) => setDate(e.value)}
-                showIcon placeholder="INICIO"
+                showIcon placeholder="DESDE"
               />
             </div>
             <div className="contentNav">
@@ -28,12 +28,15 @@ export const RotacionProducto = () => {
                 className="calen"
                 value={date}
                 onChange={(e) => setDate(e.value)}
-                showIcon placeholder="FIN"
+                showIcon placeholder="HASTA"
               />
             </div>
           </div>
           <div className="boxInputRotacion">
-            <div className="boxDato"></div>
+            <div className="boxDato">
+              <label>Hola</label>
+              <p>perro</p>
+            </div>
             <div className="boxDato"></div>
             <div className="boxDato"></div>
             <div className="boxDato"></div>
