@@ -3,6 +3,8 @@ import { InputNumber } from 'primereact/inputnumber';
 import { Button } from 'primereact/button';
 import { VistaTabla } from './Tables/VistaTabla';
 
+        
+
 
 
 export const VisualizarFactura = () => {
