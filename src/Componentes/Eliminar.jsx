@@ -19,14 +19,17 @@ export const Eliminar = () => {
             
           </div>
           <div className="inputAdd">
+          
             <label>Nombre:</label>
           </div>
           
           <div className="inputAdd">
+          <span className="pi pi-dollar"></span>
             <label> Compra: </label>
             
           </div>
           <div className="inputAdd">
+          <span className="pi pi-dollar"></span>
             <label> Venta: </label>
           </div>
           <div className="inputAdd">

@@ -80,3 +80,31 @@
   margin-right: 2.5rem;
   
 }
+/*Generar Factura*/
+
+.ImputsGenerar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--fontDefault);
+  font-size: 18px;
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.ImputsGenerar label {
+  margin-right: 20px;
+  color: black;
+}
+
+.ImputsGenerar .p-inputnumber {
+  margin-bottom: -6px;
+}
+
+.ImputsGenerar .p-button {
+  margin-top: 5px;
+  margin-right: 30px;
+}

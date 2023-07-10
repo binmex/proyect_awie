@@ -21,11 +21,13 @@ export const AgregarItem = () => {
             <InputNumber inputId="integeronly" />
           </div>
           <div className="inputAdd">
-            <label>Precio Compra: </label>
+          <span className="pi pi-dollar"></span>
+            <label> Compra: </label>
             <InputNumber inputId="integeronly"/>
           </div>
           <div className="inputAdd">
-            <label>Precio Venta: </label>
+          <span className="pi pi-dollar"></span>
+            <label> Venta: </label>
             <InputNumber inputId="integeronly" />
           </div>
           <div className="inputAdd">

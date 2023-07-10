@@ -25,10 +25,12 @@ export const ModItem = () => {
           </div>
           
           <div className="inputAdd">
+          <span className="pi pi-dollar"></span>
             <label>Compra: </label>
             <InputNumber inputId="integeronly" />
           </div>
           <div className="inputAdd">
+          <span className="pi pi-dollar"></span>
             <label>Venta: </label>
             <InputNumber inputId="integeronly" />
           </div>
