@@ -27,6 +27,7 @@ export const ChartRotacion1 = ({tipo}) => {
         },
       ],
     };
+    
     const options = {
       scales: {
         y: {

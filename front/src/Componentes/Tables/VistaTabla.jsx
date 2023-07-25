@@ -4,21 +4,33 @@ import { Column } from 'primereact/column';
 
 export const VistaTabla = () => {
     const [products, setProducts] = useState([]);
+    const [totalValueSold, setTotalValueSold] = useState(0);
+
     useEffect(() => {
-        fetch('https://reqres.in/api/users?page=2').then((res)=>res.json()).then(resultado=>{
-            setProducts(resultado.data);
+
+        fetch('http://localhost:3001/api/generar/').then((res)=>res.json()).then(resultado=>{
+            console.log(resultado)
+            setProducts(resultado);
         },(error)=>{
             alert(error)
         })
     }, []);
+
+    // Calcular la sumatoria total de la columna "value_sold"
+    useEffect(() => {
+        const total = products.reduce((acc, item) => acc + item.value_sold, 0);
+        setTotalValueSold(total);
+    }, [products]);
+
     return (
         <div className="cardTableView">
             <DataTable value={products} tableStyle={{ minWidth: '40rem' }}>
-                <Column field="id" header="id"></Column>
-                <Column field="first_name" header="nombre"></Column>
-                <Column field="last_name" header="apellido"></Column>
-                <Column field="email" header="email"></Column>
+                <Column field="id_invoice" header="Id Factura"></Column>
+                <Column field="product_id" header="producto ID"></Column>
+                <Column field="date_of_sell" header="fecha de venta"></Column>
+                <Column field="value_sold" header="valor de venta"></Column>
             </DataTable>
+            <label >Total: {totalValueSold.toLocaleString('es-ES')}</label>
         </div>
     );
 }

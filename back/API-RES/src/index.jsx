@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
+const cors = require('cors');
 
 //settings
 app.set('port', process.env.PORT || 3001);
@@ -11,10 +12,10 @@ app.use(morgan('dev'));
 //soportando informacion
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
+app.use(cors({ origin: 'http://localhost:3000' }));
 
 //rutas
-app.use(require('./routes/test.jsx'));
-app.use('/api/cars',require('./routes/cars.jsx'));
+app.use('/api/generar',require('./routes/Generar.jsx'));
 
 //starting the server
 app.listen(app.get('port'),()=> console.log(`server in the por ${app.get('port')}`));

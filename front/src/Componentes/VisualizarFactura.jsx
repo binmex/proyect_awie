@@ -3,11 +3,9 @@ import { InputNumber } from 'primereact/inputnumber';
 import { Button } from 'primereact/button';
 import { VistaTabla } from './Tables/VistaTabla';
 
-        
-
-
-
 export const VisualizarFactura = () => {
+  
+
   return (
     <div className="contenido">
       <div className="cajaTablaVista">
@@ -19,7 +17,6 @@ export const VisualizarFactura = () => {
           </div>
           <div className="boxTableView">
             <VistaTabla/>
-            <label >Total: XXXXXX</label>
           </div>
         </div>
       </div>

@@ -1,16 +1,10 @@
 const {Router} = require('express');
 const router = Router();
-const cars =  require('../sample.json');
 const _ = require('underscore');
 const { pool } = require('../db.js');
 
 
-
-router.get('/',(req,res)=>{
-    res.json(cars)
-})
-
-router.get('/test',async (req,res)=>{
+router.get('/',async (req,res)=>{
   try{
     const [fact] = await pool.query("SELECT * FROM factura");
     res.json(fact);
