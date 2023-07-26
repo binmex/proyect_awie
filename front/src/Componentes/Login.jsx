@@ -2,7 +2,7 @@ import React from 'react';
 import logo from '../Assets/logoCafe.svg';
 
 const Login = () => {
-
+  
   return (
     <div className='container'>
       <div className="login">
