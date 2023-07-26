@@ -5,11 +5,11 @@ const _ = require('underscore');
 const { pool } = require('../db.js');
 
 
-
+//pool para base 
 router.get('/',(req,res)=>{
     res.json(cars)
 })
-
+//para obtener 
 router.get('/test',async (req,res)=>{
   try{
     const [fact] = await pool.query("SELECT * FROM factura");
@@ -20,7 +20,7 @@ router.get('/test',async (req,res)=>{
   }
 
 })
-
+//para crear
 router.post("/", (req, res) => {
     const id= String(cars.length + 1);
     const { brand, factory } = req.body;
@@ -32,7 +32,7 @@ router.post("/", (req, res) => {
       res.status(500).json({ error: "There was an error." });
     }
   });
-
+//Para actualizar 
   router.put("/:id", (req, res) => {
     const { id } = req.params;
     const { brand, factory } = req.body;
@@ -48,7 +48,7 @@ router.post("/", (req, res) => {
       res.status(500).json({ error: "There was an error." });
     }
   });
-
+//Para Borrar
   router.delete("/:id", (req, res) => {
     const { id } = req.params;
     if (id) {
