@@ -9,7 +9,7 @@ app.set('json spaces',2);
 
 //midelware
 app.use(morgan('dev'));
-//soportando informacion
+//soportando informacionÑ
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(cors({ origin: 'http://localhost:3000' }));

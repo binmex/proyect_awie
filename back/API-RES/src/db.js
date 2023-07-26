@@ -7,4 +7,3 @@ exports.pool = createPool({
   port: 3306,
   database: "awie",
 });
-//Para la base
