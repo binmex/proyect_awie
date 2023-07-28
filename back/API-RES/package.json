@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/configExpress.jsx"
+    "dev": "nodemon src/configExpress.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "dot-event": "^3.2.2",
     "express": "^4.18.2",
     "morgan": "^1.10.0",
     "mysql2": "^3.5.2",
