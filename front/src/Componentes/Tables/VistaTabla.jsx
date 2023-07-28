@@ -8,7 +8,7 @@ export const VistaTabla = () => {
 
     useEffect(() => {
 
-        fetch('http://localhost:3001/api/inventario/visualizar').then((res)=>res.json()).then(resultado=>{
+        fetch('http://localhost:3001/api/ventas/visualizar').then((res)=>res.json()).then(resultado=>{
             console.log(resultado)
             setProducts(resultado);
         },(error)=>{
