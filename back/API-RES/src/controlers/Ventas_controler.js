@@ -14,8 +14,7 @@ exports.getFacturas = async (req, res) => {
     try {
       const { id } = req.params;
       const [rows] = await pool.query("SELECT * FROM employee WHERE id = ?", [
-        id,
-      ]);
+        id,]);
   
       if (rows.length <= 0) {
         return res.status(404).json({ message: "Employee not found" });
