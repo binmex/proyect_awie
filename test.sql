@@ -61,7 +61,7 @@ CREATE TABLE Factura (
   date_of_sell DATE,
   admin_name VARCHAR(20)
 );
-
+Drop table Venta;
 
 -- Insertar factura
 INSERT INTO Factura (date_of_sell,admin_name) 
