@@ -33,9 +33,26 @@ exports.setProduct = async (req, res) => {
   }
 };
 
-exports.putProduct = async (req, res) => {
+exports.fetchProduct = async (req, res) => {
   try {
-    console.log("test");
+    const { id } = req.params;
+    const { nombre, compra, venta, cantidad, fechaingreso } = req.body;
+    const [result1] = await pool.query(
+      "UPDATE producto SET name_product = IFNULL(?, name_product), purchase_price = IFNULL(?, purchase_price), selling_price = IFNULL(?,selling_price) WHERE id_producto = ?",
+      [nombre, compra, venta, id]
+    );
+    const [result2] = await pool.query(
+      "UPDATE StockMovimiento SET quantity_stock = IFNULL(?, quantity_stock), date_of_movement = IFNULL(?, date_of_movement) WHERE product_id = ?",
+      [cantidad, fechaingreso, id]
+    );
+    if (result1.affectedRows === 0 || result2.affectedRows === 0) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+    const [rows] = await pool.query(
+      "SELECT * FROM StockMovimiento inner join producto on StockMovimiento.product_id = producto.id_producto WHERE product_id = ?",
+      [id]
+    );
+    res.json(rows[0]);
   } catch (error) {
     return res
       .status(500)
@@ -45,7 +62,9 @@ exports.putProduct = async (req, res) => {
 
 exports.deleteProduct = async (req, res) => {
   try {
-    console.log("test");
+    const {id} = req.params;
+    pool.query('',[id]);
+    const [rows] = await pool.query('select * from productos')
   } catch (error) {
     return res.status(500).json({ message: "something goes wrong" });
   }
