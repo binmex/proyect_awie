@@ -1,3 +1,4 @@
+
 create database awie;
 use awie;
 show databases;
@@ -17,12 +18,13 @@ INSERT INTO Usuario VALUES (1007395141, 'laura', 'admin');
 CREATE TABLE Producto (
   id_producto INT auto_increment PRIMARY KEY,
   name_product VARCHAR(20) NOT NULL,
+  quantity_init int not null,
   purchase_price FLOAT NOT NULL,
   selling_price FLOAT NOT NULL
 );
-
-INSERT INTO Producto (name_product,purchase_price,selling_price) VALUES ('Leche 1L', 35000, 45000);
-INSERT INTO Producto (name_product,purchase_price,selling_price) VALUES ('Panela', 2000, 3000);
+Drop table Producto;
+INSERT INTO Producto (name_product,quantity_init,purchase_price,selling_price) VALUES ('Leche 1L',10, 35000, 45000);
+INSERT INTO Producto (name_product,quantity_init,purchase_price,selling_price) VALUES ('Panela 10g',5, 3000, 4000);
 select *  from producto;
 
 -- Tabla StockMovimiento
@@ -34,11 +36,13 @@ CREATE TABLE StockMovimiento (
   movement_type ENUM('entrada', 'salida','devolucion','otro'),
   FOREIGN KEY (product_id) REFERENCES Producto(id_producto)
 );
+drop TABLE StockMovimiento;
 -- Insertar movimiento de entrada en StockMovimiento
 INSERT INTO StockMovimiento (product_id,quantity_stock,date_of_movement,movement_type) VALUES (1, 20, '2023-07-18', 'entrada');
 INSERT INTO StockMovimiento (product_id,quantity_stock,date_of_movement,movement_type) VALUES (2, 30, '2023-06-15', 'entrada');
-
+INSERT INTO StockMovimiento (product_id,quantity_stock,date_of_movement,movement_type) VALUES (1, 2, '2023-07-18', 'salida');
 select * from StockMovimiento;
+select * from Producto;
 -- Tabla Venta
 CREATE TABLE Venta (
 id_venta INT auto_increment PRIMARY KEY,
@@ -49,14 +53,13 @@ value_sold FLOAT,
 FOREIGN KEY (product_id) REFERENCES Producto(id_producto),
 FOREIGN KEY (invoice_id) REFERENCES Factura(id_invoice)
 );
-
+Drop table Venta;
+insert into Venta values(2,1,1,1,2222);
 -- Tabla Factura
 CREATE TABLE Factura (
   id_invoice INT auto_increment PRIMARY KEY,
   date_of_sell DATE,
-  
   admin_name VARCHAR(20)
-  
 );
 
 
@@ -65,35 +68,43 @@ INSERT INTO Factura (date_of_sell,admin_name)
 VALUES ( '2023-07-18', 'robin');
 select * from Factura;
 -- Insertar factura
+INSERT INTO Venta 
+VALUES (3,1,1,1, 3333);
+select * from Venta;
+select * from StockMovimiento;
 INSERT INTO Venta (product_id ,
 invoice_id ,
 quantity_sell ,
 value_sold) 
-VALUES (1,1,1, ((select selling_price from producto where id_producto = 1)*1));
-select * from Venta;
+VALUES (1,1,1, ((select selling_price from producto where id_producto = 2)*1));
+select * from Producto;
+select * from factura;
+select * from venta;
 
-select * from stockMovimiento;
 
 /Triggers/
 
+
 DELIMITER //
-CREATE TRIGGER validar_existencia BEFORE INSERT ON Venta
+
+CREATE TRIGGER validar_existencia before INSERT ON Venta
 FOR EACH ROW
 BEGIN
-     DECLARE stock_existente INT;
-
-    SET stock_existente = COALESCE((SELECT sum(quantity_stock) FROM stockmovimiento WHERE movement_type = 'entrada' and product_id = new.product_id), 0) - 
-	COALESCE((SELECT sum(quantity_stock) FROM stockmovimiento WHERE movement_type = 'salida'and product_id = new.product_id), 0); 
+   
+    DECLARE stock_existente INT;
+    SET stock_existente = COALESCE((SELECT quantity_init FROM producto where id_producto=new.product_id));
     
-    IF stock_existente IS NULL OR stock_existente < NEW.quantity_sell THEN
+    IF stock_existente < NEW.quantity_sell THEN
         SIGNAL SQLSTATE '45000'
             SET MESSAGE_TEXT = 'No hay suficiente existencia en el stockMovimiento para crear la factura.';
+   
     END IF;
 END //
-DELIMITER ;
 
+DELIMITER ;
+drop trigger restar_cantidad_stockMovimientos;
 DELIMITER //
-CREATE TRIGGER restar_cantidad_stockMovimientos AFTER INSERT ON Venta
+create  TRIGGER restar_cantidad_stockMovimientos AFTER INSERT ON Venta
 FOR EACH ROW
 BEGIN
 DECLARE date_of_sell1 date;
@@ -102,6 +113,24 @@ SELECT date_of_sell INTO date_of_sell1 FROM Factura join Venta ON Factura.id_inv
     VALUES (new.product_id, new.quantity_sell, date_of_sell1, 'salida');
 END //
 DELIMITER ;
+
+DELIMITER //
+drop trigger restar_cantidad_Producto;
+CREATE TRIGGER restar_cantidad_Producto AFTER INSERT ON StockMovimiento
+FOR EACH ROW
+BEGIN
+  IF NEW.movement_type = 'salida' THEN
+    UPDATE Producto
+    SET quantity_init = quantity_init - NEW.quantity_stock
+    WHERE id_producto = NEW.product_id;
+  END IF;
+END //
+
+DELIMITER ;
+
+
+
+
 
 
 DELIMITER //
