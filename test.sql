@@ -1,7 +1,7 @@
 
 create database awie;
-use awie;
 show databases;
+use awie;
 show tables;
 
 -- Tabla Usuario
@@ -10,7 +10,7 @@ CREATE TABLE Usuario (
   nombre VARCHAR(20),
   contraseña VARCHAR(50) NOT NULL
 );
-
+-- Insercion table usuarios
 INSERT INTO Usuario VALUES (1193517118, 'robin', 'admin');
 INSERT INTO Usuario VALUES (1007395141, 'laura', 'admin');
 
@@ -22,9 +22,10 @@ CREATE TABLE Producto (
   purchase_price FLOAT NOT NULL,
   selling_price FLOAT NOT NULL
 );
-Drop table Producto;
+-- Insercion tabla Producto
 INSERT INTO Producto (name_product,quantity_init,purchase_price,selling_price) VALUES ('Leche 1L',10, 35000, 45000);
 INSERT INTO Producto (name_product,quantity_init,purchase_price,selling_price) VALUES ('Panela 10g',5, 3000, 4000);
+INSERT INTO Producto (name_product,quantity_init,purchase_price,selling_price) VALUES ('huevos ',8, 3000, 4000);
 select *  from producto;
 
 -- Tabla StockMovimiento
@@ -36,13 +37,11 @@ CREATE TABLE StockMovimiento (
   movement_type ENUM('entrada', 'salida','devolucion','otro'),
   FOREIGN KEY (product_id) REFERENCES Producto(id_producto)
 );
-drop TABLE StockMovimiento;
+
 -- Insertar movimiento de entrada en StockMovimiento
 INSERT INTO StockMovimiento (product_id,quantity_stock,date_of_movement,movement_type) VALUES (1, 20, '2023-07-18', 'entrada');
 INSERT INTO StockMovimiento (product_id,quantity_stock,date_of_movement,movement_type) VALUES (2, 30, '2023-06-15', 'entrada');
 INSERT INTO StockMovimiento (product_id,quantity_stock,date_of_movement,movement_type) VALUES (1, 2, '2023-07-18', 'salida');
-select * from StockMovimiento;
-select * from Producto;
 -- Tabla Venta
 CREATE TABLE Venta (
 id_venta INT auto_increment PRIMARY KEY,
@@ -53,40 +52,35 @@ value_sold FLOAT,
 FOREIGN KEY (product_id) REFERENCES Producto(id_producto),
 FOREIGN KEY (invoice_id) REFERENCES Factura(id_invoice)
 );
-Drop table Venta;
-insert into Venta values(2,1,1,1,2222);
+-- Insercion tabla venta
+INSERT INTO Venta (product_id ,
+invoice_id ,
+quantity_sell ,
+value_sold) 
+VALUES (2,2,1,2000 );
 -- Tabla Factura
 CREATE TABLE Factura (
   id_invoice INT auto_increment PRIMARY KEY,
   date_of_sell DATE,
   admin_name VARCHAR(20)
 );
-Drop table Venta;
 
 -- Insertar factura
 INSERT INTO Factura (date_of_sell,admin_name) 
-VALUES ( '2023-07-18', 'robin');
-select * from Factura;
--- Insertar factura
-INSERT INTO Venta 
-VALUES (3,1,1,1, 3333);
-select * from Venta;
-select * from StockMovimiento;
-INSERT INTO Venta (product_id ,
-invoice_id ,
-quantity_sell ,
-value_sold) 
-VALUES (1,1,1, ((select selling_price from producto where id_producto = 2)*1));
+VALUES ( '2023-08-10', 'laura');
+INSERT INTO Factura (date_of_sell,admin_name) 
+VALUES ( '2023-08-10', 'robin');
+-- select de todas las tablas
 select * from Producto;
 select * from factura;
 select * from venta;
+select * from StockMovimiento;
 
 
 /Triggers/
-
+-- Trigger que valida que haya producto para vender
 
 DELIMITER //
-
 CREATE TRIGGER validar_existencia before INSERT ON Venta
 FOR EACH ROW
 BEGIN
@@ -100,22 +94,22 @@ BEGIN
    
     END IF;
 END //
-
 DELIMITER ;
-drop trigger restar_cantidad_stockMovimientos;
+-- Termina trigger
+-- Trigger que crea el registro de salida en stock movimiento 
 DELIMITER //
 create  TRIGGER restar_cantidad_stockMovimientos AFTER INSERT ON Venta
 FOR EACH ROW
 BEGIN
-DECLARE date_of_sell1 date;
-SELECT date_of_sell INTO date_of_sell1 FROM Factura join Venta ON Factura.id_invoice = Venta.invoice_id;
+
 	INSERT INTO StockMovimiento (product_id,quantity_stock,date_of_movement,movement_type)
-    VALUES (new.product_id, new.quantity_sell, date_of_sell1, 'salida');
+    VALUES (new.product_id, new.quantity_sell, NOW(), 'salida');
 END //
 DELIMITER ;
-
+-- Termina trigger
+-- Trigger que resta la cantidad de producto al haber una salida en stock movimiento 
 DELIMITER //
-drop trigger restar_cantidad_Producto;
+
 CREATE TRIGGER restar_cantidad_Producto AFTER INSERT ON StockMovimiento
 FOR EACH ROW
 BEGIN
@@ -127,12 +121,8 @@ BEGIN
 END //
 
 DELIMITER ;
-
-
-
-
-
-
+-- Termina trigger
+-- Trigger que valida la existencia de una factura por el periodo 
 DELIMITER //
 CREATE TRIGGER validar_periodo_existente BEFORE insert ON factura
 FOR EACH ROW
@@ -149,3 +139,4 @@ BEGIN
     END IF;
 END //
 DELIMITER ;
+-- Termina trigger
