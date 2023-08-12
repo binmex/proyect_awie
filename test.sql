@@ -140,3 +140,17 @@ BEGIN
 END //
 DELIMITER ;
 -- Termina trigger
+-- Trigger que aumenta la cantidad de producto segun stock movimiento 
+DELIMITER // 
+CREATE TRIGGER sumar_cantidad_Producto AFTER INSERT ON StockMovimiento
+FOR EACH ROW
+BEGIN
+  IF NEW.movement_type = 'entrada' THEN
+    UPDATE Producto
+    SET quantity_init = quantity_init + NEW.quantity_stock
+    WHERE id_producto = NEW.product_id;
+  END IF;
+END //
+
+DELIMITER ;
+-- Termina trigger
