@@ -1,23 +1,12 @@
-const { json } = require("express");
 const { pool } = require("../db");
 
 exports.setProduct = async (req, res) => {
+  //INSERT INTO Producto (name_product,quantity_init,purchase_price,selling_price) VALUES ('Leche 1L',10, 35000, 45000);
   try {
     const { nombre, compra, venta, cantidad, fechaingreso } = req.body;
     const [rows] = await pool.query(
-      "INSERT INTO Producto (name_product,purchase_price,selling_price) VALUES (?, ?, ?)",
-      [nombre, compra, venta]
-    );
-
-    //falta obtener el id del producto añadido
-    const [idProducto] = await pool.query(
-      "select id_producto from producto where name_product = ?",
-      [nombre]
-    );
-    //se añade el stock
-    await pool.query(
-      "insert into stockmovimiento (product_id,quantity_stock,date_of_movement,movement_type) values (?, ?, ?, ?)",
-      [idProducto[0].id_producto, cantidad, fechaingreso, "entrada"]
+      "INSERT INTO Producto (name_product,quantity_init,purchase_price,selling_price) VALUES (?, ?, ?,?)",
+      [nombre, cantidad, compra,venta]
     );
 
     res.status(201).json({
@@ -45,7 +34,7 @@ exports.fetchProduct = async (req, res) => {
       "UPDATE StockMovimiento SET quantity_stock = IFNULL(?, quantity_stock), date_of_movement = IFNULL(?, date_of_movement) WHERE product_id = ?",
       [cantidad, fechaingreso, id]
     );
-    if (result1.affectedRows === 0 || result2.affectedRows === 0) {
+    if (result1.affectedRows === 0 && result2.affectedRows === 0) {
       return res.status(404).json({ message: "Product not found" });
     }
     const [rows] = await pool.query(
@@ -63,8 +52,18 @@ exports.fetchProduct = async (req, res) => {
 exports.deleteProduct = async (req, res) => {
   try {
     const {id} = req.params;
-    pool.query('',[id]);
-    const [rows] = await pool.query('select * from productos')
+    //se elimina de stockMovimiento
+    const [stock] = await pool.query('delete from stockmovimiento where product_id = ?',[id]);
+    //se elimina de la tabla venta
+    const [venta] = await pool.query('delete from venta where product_id = ?',[id]);
+    //se elimina de la tabl producto
+    const [rows] = await pool.query('delete from producto where id_producto = ?',[id]);
+    if (rows.affectedRows <= 0) {
+      return res.status(404).json({ message: "Producto no found" });
+    }
+    if(rows.affectedRows > 0){
+      return res.send("eliminado")
+    }
   } catch (error) {
     return res.status(500).json({ message: "something goes wrong" });
   }

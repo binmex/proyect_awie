@@ -12,6 +12,6 @@ router.post("/ingreso", setProduct);
 //actualizar producto
 router.patch("/actualizar/:id", fetchProduct);
 //eliminar
-router.patch("/eliminar/:id",deleteProduct)
+router.delete("/eliminar/:id",deleteProduct)
 
 module.exports = router

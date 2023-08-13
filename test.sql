@@ -1,4 +1,3 @@
-
 create database awie;
 show databases;
 use awie;
@@ -42,6 +41,18 @@ CREATE TABLE StockMovimiento (
 INSERT INTO StockMovimiento (product_id,quantity_stock,date_of_movement,movement_type) VALUES (1, 20, '2023-07-18', 'entrada');
 INSERT INTO StockMovimiento (product_id,quantity_stock,date_of_movement,movement_type) VALUES (2, 30, '2023-06-15', 'entrada');
 INSERT INTO StockMovimiento (product_id,quantity_stock,date_of_movement,movement_type) VALUES (1, 2, '2023-07-18', 'salida');
+-- Tabla Factura
+CREATE TABLE Factura (
+  id_invoice INT auto_increment PRIMARY KEY,
+  date_of_sell DATE,
+  admin_name VARCHAR(20)
+);
+
+-- Insertar factura
+INSERT INTO Factura (date_of_sell,admin_name) 
+VALUES ( '2023-08-10', 'laura');
+INSERT INTO Factura (date_of_sell,admin_name) 
+VALUES ( '2023-08-10', 'robin');
 -- Tabla Venta
 CREATE TABLE Venta (
 id_venta INT auto_increment PRIMARY KEY,
@@ -58,18 +69,7 @@ invoice_id ,
 quantity_sell ,
 value_sold) 
 VALUES (2,2,1,2000 );
--- Tabla Factura
-CREATE TABLE Factura (
-  id_invoice INT auto_increment PRIMARY KEY,
-  date_of_sell DATE,
-  admin_name VARCHAR(20)
-);
 
--- Insertar factura
-INSERT INTO Factura (date_of_sell,admin_name) 
-VALUES ( '2023-08-10', 'laura');
-INSERT INTO Factura (date_of_sell,admin_name) 
-VALUES ( '2023-08-10', 'robin');
 -- select de todas las tablas
 select * from Producto;
 select * from factura;
