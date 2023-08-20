@@ -3,7 +3,7 @@ const { pool } = require("../db");
 exports.setProduct = async (req, res) => {
   //INSERT INTO Producto (name_product,quantity_init,purchase_price,selling_price) VALUES ('Leche 1L',10, 35000, 45000);
   try {
-    const { nombre, compra, venta, cantidad, fechaingreso } = req.body;
+    const { nombre, compra, venta, cantidad } = req.body;
     const [rows] = await pool.query(
       "INSERT INTO Producto (name_product,quantity_init,purchase_price,selling_price) VALUES (?, ?, ?,?)",
       [nombre, cantidad, compra,venta]
@@ -14,8 +14,7 @@ exports.setProduct = async (req, res) => {
       nombre,
       compra,
       venta,
-      cantidad,
-      fechaingreso,
+      cantidad
     });
   } catch (error) {
     return res.status(500).json({ message: "something goes wrong" });
