@@ -1,88 +1,68 @@
-import React, { useEffect, useState } from "react";
+
+import React, {useState} from "react";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { InputNumber } from "primereact/inputnumber";
-import { Calendar } from "primereact/calendar";
 import axios from "axios";
 
 export const AgregarItem = () => {
-  const [dateIngreso, setDateIngreso] = useState(null);
-  const [productos, setProductos] = useState([]);
+  const [name, setName] = useState('');
+  const [compra, setCompra] = useState(0);
+  const [venta, setVenta] = useState(0);
+  const [cantidad, setCantidad] = useState(0);
 
-  const aceptFunction = (e) => {
-    //debo tomar todos los campos
-    e.preventDefault();
-    const compraValue = parseFloat(e.target.compra.value.replace(",", ""));
-    const ventaValue = parseFloat(e.target.venta.value.replace(",", ""));
-    const cantidadValue = parseFloat(e.target.cantidadP.value);
-
+  const aceptFunction = () => {
     const producto = {
-      nombre: e.target.nombre.value,
-      cantidad: cantidadValue,
-      compra: compraValue,
-      venta: ventaValue,
+      nombre: name,
+      cantidad: cantidad,
+      compra: compra,
+      venta: venta
     };
-    setProductos(producto);
     axios
-      .post("http://localhost:4000/api/inventario/ingreso", productos)
+      .post("http://localhost:4000/api/inventario/ingreso", producto)
       .then((res) => {
-        console.log(res);
         alert("agregado");
-      });
+      }).catch((error)=>console.error(error));
   };
 
-  const prueba =()=>{
-    axios.get("http://localhost:4000/api/inventario/obtenerid").then((data)=>{
-        console.log(data);
-    })
-  }
-
-  useEffect(()=>{
-    prueba();
-  },[])
+  const limpiarCampos = () => {
+    setName("");
+    setCompra(0);
+    setVenta(0);
+    setCantidad(0);
+  };
 
   return (
     <div className="contenido">
-      <form className="cajaAgregar" onSubmit={aceptFunction}>
+      <div className="cajaAgregar">
         <h3>AGREGAR</h3>
-
+        <div className="contentRotacion">
         <div className="boxInput">
-          <div className="inputAdd">
+        <div className="inputAdd">
             <label>Nombre</label>
-            <InputText type="text" className="p-inputtext-sm" name="nombre" />
-          </div>
-          <div className="inputAdd">
-            <label>ID: </label>
-            <InputNumber inputId="integeronly" name="id" />
+            <InputText type="text" className="p-inputtext-sm" onChange={(e)=>setName(e.target.value)} />
           </div>
           <div className="inputAdd">
             <span className="pi pi-dollar"></span>
             <label> Compra: </label>
-            <InputNumber inputId="integeronly" name="compra" />
+            <InputNumber inputId="integeronly" onChange={(e)=>setCompra(e.value)}/>
           </div>
           <div className="inputAdd">
             <span className="pi pi-dollar"></span>
             <label> Venta: </label>
-            <InputNumber inputId="integeronly" name="venta" />
+            <InputNumber inputId="integeronly" onChange={(e)=>setVenta(e.value)}/>
           </div>
           <div className="inputAdd">
             <label>Cantidad</label>
-            <InputNumber inputId="integeronly" name="cantidadP" />
-          </div>
-          <div className="inputAdd">
-            <label>Ingreso </label>
-            <Calendar
-              value={dateIngreso}
-              onChange={(e) => setDateIngreso(e.value)}
-              showIcon
-            />
+            <InputNumber inputId="integeronly" onChange={e=>setCantidad(e.value)}/>
           </div>
           <div className="inputAdd button" id="boxButtonAdd">
-            <Button label="Limpiar" severity="warning" type="submit" />
-            <Button label="Aceptar" severity="success" />
+            <Button label="Limpiar" severity="warning" onClick={()=>limpiarCampos()}/>
+            <Button label="Aceptar" severity="success" onClick={()=>aceptFunction()}/>
           </div>
         </div>
-      </form>
+        </div>
+      </div>
     </div>
   );
 };

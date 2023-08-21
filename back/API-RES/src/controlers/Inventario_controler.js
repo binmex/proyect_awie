@@ -3,6 +3,7 @@ const { pool } = require("../db");
 exports.setProduct = async (req, res) => {
   //INSERT INTO Producto (name_product,quantity_init,purchase_price,selling_price) VALUES ('Leche 1L',10, 35000, 45000);
   try {
+    console.log(req.body)
     const { nombre, compra, venta, cantidad } = req.body;
     const [rows] = await pool.query(
       "INSERT INTO Producto (name_product,quantity_init,purchase_price,selling_price) VALUES (?, ?, ?,?)",
@@ -17,7 +18,7 @@ exports.setProduct = async (req, res) => {
       cantidad
     });
   } catch (error) {
-    return res.status(500).json({ message: "something goes wrong" });
+    return res.status(500).json({ message: "something goes wrong"+error });
   }
 };
 
@@ -85,7 +86,7 @@ exports.getProduct = async (req, res) => {
 };
 exports.getIdProducts = async (req, res) => {
   try {
-    const [rows] = await pool.query("select id_producto from producto");
+    const [rows] = await pool.query("select * from producto");
     if (rows.length <= 0) {
       return res.status(404).json({ message: "IdProduct not found" });
     }
