@@ -6,10 +6,10 @@ import { InputNumber } from "primereact/inputnumber";
 import axios from "axios";
 
 export const AgregarItem = () => {
-  const [name, setName] = useState('');
-  const [compra, setCompra] = useState(0);
-  const [venta, setVenta] = useState(0);
-  const [cantidad, setCantidad] = useState(0);
+  const [name, setName] = useState("");
+  const [compra, setCompra] = useState("");
+  const [venta, setVenta] = useState("");
+  const [cantidad, setCantidad] = useState("");
 
   const aceptFunction = () => {
     const producto = {
@@ -23,15 +23,16 @@ export const AgregarItem = () => {
       .then((res) => {
         alert("agregado");
       }).catch((error)=>console.error(error));
+
   };
 
   const limpiarCampos = () => {
     setName("");
-    setCompra(0);
-    setVenta(0);
-    setCantidad(0);
+    setCompra('');
+    setVenta('');
+    setCantidad('');
+    console.log(name, cantidad, compra, compra, venta)
   };
-
   return (
     <div className="contenido">
       <div className="cajaAgregar">

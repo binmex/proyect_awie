@@ -12,7 +12,7 @@ export const Agregar = () => {
         {/**Rutas */}
         <Lateral />
         {/**Contenido*/}
-        <AgregarItem/>
+        <AgregarItem />
       </div>
     </div>
   );
