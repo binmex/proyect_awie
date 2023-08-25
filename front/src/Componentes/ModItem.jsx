@@ -10,33 +10,42 @@ import { InputNumber } from "primereact/inputnumber";
 export const ModItem = () => {
   const [selectedProduct, setSelectProduct] = useState(null);
   const [data,setData] = useState([]);
-  const [name, setName] = useState("");
-  const [compra, setCompra] = useState("");
-  const [venta, setVenta] = useState("");
-  const [cantidad, setCantidad] = useState("");
+  const [nombre,setNombre] = useState("");
+  const [compra, setCompra] = useState(null);
+  const [venta, setVenta] = useState(null);
+  const [cantidad, setCantidad] = useState(null);
+
+  
   
   const actualizarFuncion = () => {
+
     const producto = {
-      nombre: name,
-      cantidad: cantidad,
-      compra: compra,
-      venta: venta
+      nombre: nombre !== "" ? nombre : renderLabel().name_product,
+    cantidad: cantidad !== null ? cantidad : 0,
+    compra: compra !== null ? compra : renderLabel().purchase_price,
+    venta: venta !== null ? venta : renderLabel().selling_price,
+     
 
 
     };
-    const idFromLabelProduct = parseInt(document.getElementById("idLabel").innerText);
+
+    const idFromLabelProduct= parseInt(document.getElementById("idLabel").innerText);
+  
     axios
       .patch(`http://localhost:4000/api/inventario/actualizar/${idFromLabelProduct}`, producto)
+      
       .then((res) => {
         alert("actualizado");
       }).catch((error)=>console.error(error));
 
   };
+  
+  
   useEffect(()=>{
       axios.get('http://localhost:4000/api/inventario/obtenerid').then((res)=>{
         setData(res.data)
       })
-  },[]);
+  },[selectedProduct]);
 
   
 
@@ -48,6 +57,7 @@ export const ModItem = () => {
         <label>No se ha seleccionado ningún producto</label>
       );
     }
+    
   };
   return (
     <div className="content">
@@ -65,24 +75,25 @@ export const ModItem = () => {
           </div>
           <div className="inputAdd">
             <label>Nombre</label>
+            
             <InputText
-              type="text" value={renderLabel().name_product} readOnly
-              className="p-inputtext-sm"  onChange={(e)=>setName(e.value)}/>
+              type="text" 
+              className="p-inputtext-sm"  onChange={(e)=>setNombre(e.target.value)}/>
           </div>
           
           <div className="inputAdd">
           <span className="pi pi-dollar"></span>
             <label>Compra: </label>
-            <InputNumber inputId="integeronly" value={renderLabel().purchase_price} readOnly  onChange={(e)=>setCompra(e.value)}/>
+            <InputNumber inputId="integeronly" value={renderLabel().purchase_price} onChangeCapture={(e)=>setCompra(e.value)}/>
           </div>
           <div className="inputAdd">
           <span className="pi pi-dollar"></span>
             <label>Venta: </label>
-            <InputNumber inputId="integeronly" value={renderLabel().selling_price} readOnly onChange={(e)=>setVenta(e.value)}/>
+            <InputNumber inputId="integeronly" value={renderLabel().selling_price} onChange={(e)=>setVenta(e.value)}/>
           </div>
           <div className="inputAdd">
             <label>Cantidad</label>
-            <InputNumber inputId="integeronly" placeholder="Cantidad de entrada " onChange={(e)=>setCantidad(e.value)}/>
+            <InputNumber inputId="integeronly" placeholder="Cantidad de entrada "  onChange={(e)=>setCantidad(e.value)}/>
           </div>
           
           <div className="inputAdd button">
