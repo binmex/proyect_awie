@@ -55,13 +55,13 @@ exports.fetchProduct = async (req, res) => {
 
 exports.deleteProduct = async (req, res) => {
   try {
-    const {id} = req.params;
+    const {idborrar} = req.params;
     //se elimina de stockMovimiento
-    const [stock] = await pool.query('delete from stockmovimiento where product_id = ?',[id]);
+   // const [stock] = await pool.query('delete from stockmovimiento where product_id = ?',[id]);
     //se elimina de la tabla venta
-    const [venta] = await pool.query('delete from venta where product_id = ?',[id]);
+    //const [venta] = await pool.query('delete from venta where product_id = ?',[id]);
     //se elimina de la tabl producto
-    const [rows] = await pool.query('delete from producto where id_producto = ?',[id]);
+    const [rows] = await pool.query('delete from producto where id_producto = ?',[idborrar]);
     if (rows.affectedRows <= 0) {
       return res.status(404).json({ message: "Producto no found" });
     }

@@ -8,7 +8,6 @@ export const GenerarFactura = () => {
   const [source, setSource] = useState([]);
   const [target, setTarget] = useState([]);
   const [total, setTotal] = useState(0);
-  const [value3, setValue3] = useState(1);
   const [quantities, setQuantities] = useState({});
 
 
