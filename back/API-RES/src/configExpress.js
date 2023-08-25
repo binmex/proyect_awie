@@ -18,6 +18,7 @@ app.use(cors({ origin: '*' }));
 app.use('/api/inventario',require('./routes/Inventario_routes.js'));
 app.use('/api/estadisticas',require('./routes/Estadisticas_router.js'));
 app.use('/api/ventas',require('./routes/Ventas_router.js'));
+app.use('/api/login',require('./routes/Login_router.js'));
 
 //starting the server
 app.listen(app.get('port'),()=> console.log(`server in the por ${app.get('port')}`));
