@@ -10,6 +10,7 @@ export const AgregarItem = () => {
   const [compra, setCompra] = useState("");
   const [venta, setVenta] = useState("");
   const [cantidad, setCantidad] = useState("");
+  
 
   const aceptFunction = () => {
     const producto = {
