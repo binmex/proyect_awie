@@ -24,22 +24,26 @@ exports.setProduct = async (req, res) => {
 
 exports.fetchProduct = async (req, res) => {
   try {
-    const { id } = req.params;
-    const { nombre, compra, venta, cantidad, fechaingreso } = req.body;
+    const {idFromLabelProduct} = req.params;
+    const { nombre, compra, venta, cantidad } = req.body;
+   
+
+   
     const [result1] = await pool.query(
       "UPDATE producto SET name_product = IFNULL(?, name_product), purchase_price = IFNULL(?, purchase_price), selling_price = IFNULL(?,selling_price) WHERE id_producto = ?",
-      [nombre, compra, venta, id]
+      [nombre, compra, venta,idFromLabelProduct]
     );
     const [result2] = await pool.query(
-      "UPDATE StockMovimiento SET quantity_stock = IFNULL(?, quantity_stock), date_of_movement = IFNULL(?, date_of_movement) WHERE product_id = ?",
-      [cantidad, fechaingreso, id]
+      "INSERT INTO StockMovimiento (product_id,quantity_stock,date_of_movement,movement_type) VALUES (?,?,NOW(),'entrada')",
+      [idFromLabelProduct,cantidad]
+      
     );
     if (result1.affectedRows === 0 && result2.affectedRows === 0) {
       return res.status(404).json({ message: "Product not found" });
     }
     const [rows] = await pool.query(
       "SELECT * FROM StockMovimiento inner join producto on StockMovimiento.product_id = producto.id_producto WHERE product_id = ?",
-      [id]
+      [idFromLabelProduct]
     );
     res.json(rows[0]);
   } catch (error) {

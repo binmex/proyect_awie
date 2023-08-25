@@ -10,7 +10,7 @@ router.get("/obtenerid", getIdProducts);
 //ingresar producto
 router.post("/ingreso", setProduct);
 //actualizar producto
-router.patch("/actualizar/:id", fetchProduct);
+router.patch("/actualizar/:idFromLabelProduct", fetchProduct);
 //eliminar
 router.delete("/eliminar/:id",deleteProduct)
 
