@@ -11,7 +11,7 @@ const createToken = (user)=>{
         id: user.cc,
         name: user.nombre,
         iat: moment().unix(),
-        exp: moment().add(1,"days").unix
+        exp: moment().add(1,"days").unix()
     };
 //devolver token codificado
 return jwt.encode(payload, secret);
