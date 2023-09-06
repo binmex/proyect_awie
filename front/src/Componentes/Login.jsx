@@ -11,6 +11,7 @@ const Login = () => {
   const[password,setPassword] = useState('');
 
   const loginButton = (e)=>{
+    e.preventDefault();
     const credential ={
       nombre: user,
       contraseña: password

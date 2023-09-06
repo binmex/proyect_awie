@@ -17,12 +17,13 @@ import { GenerarPage } from "../pages/GenerarPage";
 import { VisualizarPage } from "../pages/VisualizarPage";
 
 export const Router = () => {
-  //const token = JSON.parse(localStorage.getItem("login"));
+  // eslint-disable-next-line
+  const token = JSON.parse(localStorage.getItem("login"));
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login/>} />
-        <Route path="/dashboard" element={JSON.parse(localStorage.getItem("login")) === null ? <Login/> : <Dashboard/>} />
+        <Route path="/dashboard" element={<Dashboard/>} />
         <Route path="/agregar" element={<Agregar/>} />
         <Route path="/modificar" element={<ModificarPage/>} />
         <Route path="/eliminar" element={<EliminarPage/>} />
