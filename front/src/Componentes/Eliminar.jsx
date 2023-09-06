@@ -8,14 +8,15 @@ export const Eliminar = () => {
   const [selectedProduct, setSelectProduct] = useState(null);
   const [data,setData] = useState([]);
   const funcionBorrar= () => {
-
-
-
+    const token = JSON.parse(localStorage.getItem("login"));
+    const config = {
+      headers:{
+          Authorization: token
+      }
+    }
     const idborrar= parseInt(document.getElementById("idborr").innerText);
-  
     axios
-      .delete(`http://localhost:4000/api/inventario/eliminar/${idborrar}`)
-      
+      .delete(`http://localhost:4000/api/inventario/eliminar/${idborrar}`,config)
       .then((res) => {
         alert("borrado");
       }).catch((error)=>console.error(error));
@@ -23,9 +24,15 @@ export const Eliminar = () => {
   };
 
   useEffect(()=>{
-    axios.get('http://localhost:4000/api/inventario/obtenerid').then((res)=>{
+    const token = JSON.parse(localStorage.getItem("login"));
+    const config = {
+      headers:{
+          Authorization: token
+      }
+    }
+    axios.get('http://localhost:4000/api/inventario/obtenerid',config).then((res)=>{
       setData(res.data)
-    })
+    }).catch(()=>console.log("logueate loca"))
 },[]);
   const renderLabel = () => {
     if (selectedProduct !== null) {

@@ -13,16 +13,19 @@ export const GenerarFactura = () => {
 
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/ventas/getproductos")
-      .then((res) => res.json())
-      .then(
-        (resultado) => {
-          setSource(resultado);
-        },
-        (error) => {
-          alert(error);
-        }
-      );
+    const token = JSON.parse(localStorage.getItem("login"));
+    const config = {
+      headers:{
+          Authorization: token
+      }
+    }
+    axios.get('http://localhost:4000/api/ventas/getproductos', config)
+    .then((res) => {
+      setSource(res.data);
+    })
+    .catch((error) => {
+      alert(error);
+    });
   }, []);
 
   const onChange = (event) => {

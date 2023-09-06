@@ -23,7 +23,7 @@ export const Error404 = () => {
         </svg>
         <h1 className='noFoundH1'>page not found</h1>
         <p>
-          <Link to='/dashboard' className='linkNofound'>Inicio</Link>
+          <Link to='/' className='linkNofound'>Inicio</Link>
         </p>
       </div>
 

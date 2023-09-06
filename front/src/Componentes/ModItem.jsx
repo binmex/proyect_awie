@@ -18,22 +18,16 @@ export const ModItem = () => {
   
   
   const actualizarFuncion = () => {
-
     const producto = {
       nombre: nombre !== "" ? nombre : renderLabel().name_product,
     cantidad: cantidad !== null ? cantidad : 0,
     compra: compra !== null ? compra : renderLabel().purchase_price,
     venta: venta !== null ? venta : renderLabel().selling_price,
-     
-
-
     };
 
     const idFromLabelProduct= parseInt(document.getElementById("idLabel").innerText);
-  
     axios
-      .patch(`http://localhost:4000/api/inventario/actualizar/${idFromLabelProduct}`, producto)
-      
+      .patch(`http://localhost:4000/api/inventario/actualizar/${idFromLabelProduct}`,producto)
       .then((res) => {
         alert("actualizado");
       }).catch((error)=>console.error(error));
@@ -42,9 +36,15 @@ export const ModItem = () => {
   
   
   useEffect(()=>{
-      axios.get('http://localhost:4000/api/inventario/obtenerid').then((res)=>{
+    const token = JSON.parse(localStorage.getItem("login"));
+    const config = {
+      headers:{
+          Authorization: token
+      }
+    }
+      axios.get('http://localhost:4000/api/inventario/obtenerid',config).then((res)=>{
         setData(res.data)
-      })
+      }).catch(()=>alert("logueate"))
   },[selectedProduct]);
 
   

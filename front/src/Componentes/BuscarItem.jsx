@@ -5,9 +5,15 @@ export const BuscarItem = () => {
   const [selectedProduct, setSelectProduct] = useState(null);
   const [data,setData] = useState([]);
   useEffect(()=>{
-      axios.get('http://localhost:4000/api/inventario/obtenerid').then((res)=>{
+    const token = JSON.parse(localStorage.getItem("login"));
+    const config = {
+      headers:{
+          Authorization: token
+      }
+    }
+      axios.get('http://localhost:4000/api/inventario/obtenerid',config).then((res)=>{
         setData(res.data)
-      })
+      }).catch(()=>alert("login invalido"))
   },[]);
 
   const renderLabel = () => {
