@@ -10,7 +10,7 @@ export const GenerarFactura = () => {
   const [total, setTotal] = useState(0);
   const [quantities, setQuantities] = useState({});
 
-
+  
 
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("login"));
@@ -43,11 +43,13 @@ export const GenerarFactura = () => {
     setQuantities((prevQuantities) => ({
       ...prevQuantities,
       [itemId]: newQuantity,
+
     }));
   };
+ 
 
   const simularPago = ()=>{
-    axios.post("http://localhost:4000/api/ventas/addventa", target).then((res) => {
+    axios.post(`http://localhost:4000/api/ventas/addventa/${quantities}`,target).then((res) => {
         alert("Venta añadida");
       }).catch((error)=>console.error(error));
   }
