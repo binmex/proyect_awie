@@ -3,6 +3,10 @@ import logo from '../Assets/logoCafe.svg';
 
 
 export const BarraNav = () => {
+
+  const closeSesion = ()=>{
+    localStorage.clear();
+  }
   return (
     <header className="header">
       <div className="logo">
@@ -14,7 +18,7 @@ export const BarraNav = () => {
       <nav>
         <ul>
           <li>
-            <a href='/'>Cerrar sesion <span className="pi pi-sign-out"/> </a>
+            <a href='/' onClick={closeSesion} type='submit'>Cerrar sesion <span className="pi pi-sign-out"/> </a>
           </li>
         </ul>
       </nav>
