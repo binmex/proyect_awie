@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import logo from '../Assets/logoCafe.svg';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { SaveLocalStorage } from '../helpers/SaveLocalStorage';
 
 
 const Login = () => { 
@@ -19,6 +20,7 @@ const Login = () => {
       //redireccionar a dashboard
       navigate('/dashboard');
       console.log(res.data)
+      SaveLocalStorage("login",res.data.token)
     }).catch((error)=>
     alert("credenciales incorrectas")
     );

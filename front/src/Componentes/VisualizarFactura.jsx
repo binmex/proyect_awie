@@ -8,12 +8,17 @@ export const VisualizarFactura = () => {
   const [factura,setFactura] = useState(0);
   const [products, setProducts] = useState([]);
   
-  const searchFactura = ()=>{
-      axios.get(`http://localhost:4000/api/ventas/visualizar/${factura}`)
-      .then((res) => {
-        setProducts(res.data)
-      }).catch((error)=>console.error(error));
+  const searchFactura = () => {  
+    axios.get(`http://localhost:4000/api/ventas/visualizar/${factura}`)
+    .then((res) => {
+      setProducts(res.data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   }
+  
+  
 
   return (
     <div className="contenido">

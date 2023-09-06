@@ -1,18 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
+import axios from 'axios';
 
 export const VistaTabla = ({products,setProducts}) => {
     const [totalValueSold, setTotalValueSold] = useState(0);
 
     useEffect(() => {
-
-        fetch('http://localhost:4000/api/ventas/visualizar').then((res)=>res.json()).then(resultado=>{
-            setProducts(resultado);
-        },(error)=>{
-            alert(error)
-        })
-    }, []);
+        const token = JSON.parse(localStorage.getItem("login"));
+        const config = {
+            headers:{
+                Authorization: token
+            }
+          };
+        axios.get('http://localhost:4000/api/ventas/visualizar', config)
+    .then((res) => {
+        console.log(res.data)
+      setProducts(res.data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }, []);
+      
 
     // Calcular la sumatoria total de la columna "value_sold"
     useEffect(() => {
