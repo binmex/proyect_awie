@@ -48,8 +48,14 @@ exports.getProductos = async(req,res) => {
 
 exports.addVenta = async (req,res) => {
   try {
+    const quantities = req.params;
+    console.log(typeof quantities)
+    console.log(quantities)
+   
+
     const params = req.body;
-    let cantidad2 = 1;
+
+    //let cantidad2 = 1;
     let robin = "robin"
     const [row] = await pool.query(
       "INSERT INTO Factura (date_of_sell,admin_name) VALUES ( NOW(), ?)",
@@ -62,7 +68,7 @@ exports.addVenta = async (req,res) => {
     for (let index = 0; index < req.body.length; index++) {
       const [rows] = await pool.query(
         "INSERT INTO venta (product_id,invoice_id,quantity_sell,value_sold) VALUES ( ?,?,?,?)",
-        [ params[index].id_producto,row.insertId,cantidad2,params[index].selling_price]
+        [ params[index].id_producto,row.insertId,quantities,params[index].selling_price]
       );
       if (rows.length <= 0) {
         return res.status(404).json({ message: "Venta no creada" });
