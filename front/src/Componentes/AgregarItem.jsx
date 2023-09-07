@@ -20,16 +20,18 @@ export const AgregarItem = () => {
       venta: venta
     };
     const token = JSON.parse(localStorage.getItem("login"));
+    console.log(token[0]);
     const config = {
       headers:{
           Authorization: token
       }
     }
+    console.log(config)
     axios
-      .post("http://localhost:4000/api/inventario/ingreso", config,producto)
+      .post("http://localhost:4000/api/inventario/ingreso",config,producto)
       .then((res) => {
         alert("agregado");
-      }).catch((error)=>alert("falta loguin"+error));
+      }).catch((error)=>console.log(error));
 
   };
 
