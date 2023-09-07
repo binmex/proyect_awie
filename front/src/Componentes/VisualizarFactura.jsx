@@ -9,11 +9,18 @@ export const VisualizarFactura = () => {
   const [products, setProducts] = useState([]);
   
   const searchFactura = () => {  
-    axios.get(`http://localhost:4000/api/ventas/visualizar/${factura}`)
+    const token = JSON.parse(localStorage.getItem("login"));
+    const config = {
+        headers:{
+            Authorization: token
+        }
+      };
+    axios.get(`http://localhost:4000/api/ventas/visualizar/${factura}`,config)
     .then((res) => {
       setProducts(res.data);
     })
     .catch((error) => {
+      alert('porfavor logueese loca')
       console.error(error);
     });
   }

@@ -21,6 +21,7 @@ export const VistaTabla = ({products,setProducts}) => {
     .catch((error) => {
       console.error(error);
     });
+    // eslint-disable-next-line
   }, []);
       
 

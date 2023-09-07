@@ -11,16 +11,15 @@ const Login = () => {
   const[password,setPassword] = useState('');
 
   const loginButton = (e)=>{
-    e.preventDefault()
+    e.preventDefault();
     const credential ={
       nombre: user,
       contraseña: password
     }
     axios.post("http://localhost:4000/api/login/succes",credential).then((res) => {
       //redireccionar a dashboard
-      navigate('/dashboard');
-      console.log(res.data)
       SaveLocalStorage("login",res.data.token)
+      navigate('/dashboard');
     }).catch((error)=>
     alert("credenciales incorrectas")
     );
@@ -46,7 +45,7 @@ const Login = () => {
 
             <input type="password" id="password" name="password" className='formcaja' onChange={(e) => setPassword(e.target.value)}/>
           </div>
-          <button className='but_login' onClick={(e)=>loginButton(e)}>Login</button>
+          <button className='but_login' type='submit' onClick={(e)=>loginButton(e)}>Login</button>
         </form>
       </div>
     </div>

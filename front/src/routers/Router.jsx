@@ -17,21 +17,23 @@ import { GenerarPage } from "../pages/GenerarPage";
 import { VisualizarPage } from "../pages/VisualizarPage";
 
 export const Router = () => {
+  // eslint-disable-next-line
+  const token = JSON.parse(localStorage.getItem("login"));
   return (
     <BrowserRouter>
-        <Routes>
+      <Routes>
         <Route path="/" element={<Login/>} />
-          <Route path="/dashboard" element={<Dashboard/>} />
-          <Route path="/agregar" element={<Agregar/>} />
-          <Route path="/modificar" element={<ModificarPage/>} />
-          <Route path="/eliminar" element={<EliminarPage/>} />
-          <Route path="/consultar" element={<ConsultarPage/>} />
-          <Route path="/rotacion" element={<RotacionPage/>} />
-          <Route path="/ganancias" element={<GananciasPage/>}/>
-          <Route path="/generarFactura" element={<GenerarPage/>}/>
-          <Route path="/visualizarFactura" element={<VisualizarPage/>}/>
-          <Route path="*" element={<Error404/>}/>
-        </Routes>
+        <Route path="/dashboard" element={<Dashboard/>} />
+        <Route path="/agregar" element={<Agregar/>} />
+        <Route path="/modificar" element={<ModificarPage/>} />
+        <Route path="/eliminar" element={<EliminarPage/>} />
+        <Route path="/consultar" element={<ConsultarPage/>} />
+        <Route path="/rotacion" element={<RotacionPage/>} />
+        <Route path="/ganancias" element={<GananciasPage/>}/>
+        <Route path="/generarFactura" element={ <GenerarPage/>}/>
+        <Route path="/visualizarFactura" element={<VisualizarPage/>}/>
+        <Route path="*" element={<Error404/>}/>
+      </Routes>
     </BrowserRouter>
   );
 };
