@@ -9,6 +9,6 @@ router.get("/visualizar/:id", check.auth, getFactura);
 //obtener productos en genearar
 router.get("/getproductos",check.auth,getProductos)
 
-router.post("/addventa/:quantities", addVenta)
+router.post("/addventa", addVenta)
 
 module.exports = router
