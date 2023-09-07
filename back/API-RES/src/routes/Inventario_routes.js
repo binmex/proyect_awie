@@ -8,12 +8,12 @@ const router = Router();
 //consultar
 router.get("/consultar/:id",getProduct);
 //obtener ID
-router.get("/obtenerid",check.auth, getIdProducts);
+router.get("/obtenerid",getIdProducts);
 //ingresar producto
-router.post("/ingreso", check.auth,setProduct);
+router.post("/ingreso",setProduct);
 //actualizar producto
 router.patch("/actualizar/:idFromLabelProduct",fetchProduct);
 //eliminar
-router.delete("/eliminar/:idborrar",check.auth,deleteProduct)
+router.delete("/eliminar/:idborrar",deleteProduct)
 
 module.exports = router

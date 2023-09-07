@@ -19,17 +19,17 @@ export const AgregarItem = () => {
       compra: compra,
       venta: venta
     };
-    const token = JSON.parse(localStorage.getItem("login"));
+    const token = JSON.parse(localStorage.getItem("login"))[1];
     const config = {
       headers:{
           Authorization: token
       }
     }
     axios
-      .post("http://localhost:4000/api/inventario/ingreso", config,producto)
+      .post("http://localhost:4000/api/inventario/ingreso",producto)
       .then((res) => {
         alert("agregado");
-      }).catch((error)=>alert("falta loguin"+error));
+      }).catch((error)=>console.log("falta loguin"+error));
 
   };
 
