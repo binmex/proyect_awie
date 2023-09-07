@@ -12,6 +12,6 @@ router.get("/visualizar/:id", getFactura);
 //obtener productos
 router.get("/getproductos",getProductos)
 
-router.post("/addventa/:quantities", addVenta)
+router.post("/addventa", addVenta)
 
 module.exports = router

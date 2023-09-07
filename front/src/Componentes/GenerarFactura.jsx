@@ -30,23 +30,41 @@ export const GenerarFactura = () => {
     setTarget(event.target);
 
     const selectedItemsTotal = event.target.reduce(
-      (acc, item) => acc + item.selling_price * (quantities[item.id] || 1),
+      (acc, item) => acc + item.selling_price * (quantities[item.id_producto] || 1),
       0
     );
     setTotal(selectedItemsTotal);
   };
 
   const handleQuantityChange = (itemId, newQuantity) => {
-    setQuantities((prevQuantities) => ({
-      ...prevQuantities,
-      [itemId]: newQuantity,
-
-    }));
+    // Imprimir el itemId y newQuantity en la consola
+    console.log("Item ID:", itemId);
+    console.log("New Quantity:", newQuantity);
+  
+    setQuantities((prevQuantities) => {
+      // Aquí prevQuantities es la versión más reciente del estado
+      const updatedQuantities = {
+        ...prevQuantities,
+        [itemId]: newQuantity,
+      };
+  
+      // Imprimir el objeto quantities actualizado en la consola
+      console.log("Quantities:", updatedQuantities);
+      console.log(quantities)
+      return updatedQuantities; 
+      
+      // Devuelve el nuevo estado
+    });
   };
  
 
   const simularPago = ()=>{
-    axios.post(`http://localhost:4000/api/ventas/addventa/${quantities}`,target).then((res) => {
+    const ventas = target.map((item) => ({
+      product_id: item.id_producto,
+      quantity_sell: quantities[item.id_producto] || 0, // Aquí obtén la cantidad del objeto quantities
+      selling_price: item.selling_price,
+    }));
+    axios.post(`http://localhost:4000/api/ventas/addventa`,ventas).then((res) => {
         alert("Venta añadida");
       }).catch((error)=>console.error(error));
   }
@@ -63,11 +81,11 @@ export const GenerarFactura = () => {
         </div>
         <span className="font-bold text-900">${item.selling_price}</span>
         <InputNumber
-          value={quantities[item.id_producto] || 1}
-          onValueChange={(e) => handleQuantityChange(item.id, e.value)}
+          value={quantities[item.id_producto] || 0}
+          onValueChange={(e) => handleQuantityChange(item.id_producto, e.value)}
           mode="decimal"
           showButtons
-          min={1}
+          min={0}
           max={100}
         />
       </div>
