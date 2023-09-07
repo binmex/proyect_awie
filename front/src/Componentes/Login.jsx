@@ -45,7 +45,7 @@ const Login = () => {
 
             <input type="password" id="password" name="password" className='formcaja' onChange={(e) => setPassword(e.target.value)}/>
           </div>
-          <button className='but_login' type='submit' onClick={(e)=>loginButton(e)}>Login</button>
+          <button className='but_login' onClick={(e)=>loginButton(e)}>Login</button>
         </form>
       </div>
     </div>

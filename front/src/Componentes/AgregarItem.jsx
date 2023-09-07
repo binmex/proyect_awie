@@ -25,6 +25,7 @@ export const AgregarItem = () => {
           Authorization: token
       }
     }
+    console.log(config)
     axios
       .post("http://localhost:4000/api/inventario/ingreso",producto)
       .then((res) => {
