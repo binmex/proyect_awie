@@ -1,12 +1,9 @@
-const { getEmployees, getEmployee } = require("../controlers/Inventario_controler");
 const { Router } = require("express");
+const check = require("../middlewares/auth");
+const { getRotacion } = require("../controlers/Estadisticas_controler");
 
 const router = Router();
 
-// GET all Employees
-//router.get("/employees", getEmployees);
-
-// GET An Employee
-//router.get("/employees/:id", getEmployee);
+router.get("/rotacion/:id/:dateInit/:dateEnd",getRotacion);
 
 module.exports = router

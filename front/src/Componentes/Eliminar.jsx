@@ -32,7 +32,7 @@ export const Eliminar = () => {
     }
     axios.get('http://localhost:4000/api/inventario/obtenerid',config).then((res)=>{
       setData(res.data)
-    }).catch(()=>console.log("logueate loca"))
+    }).catch((error)=>console.log(error))
 },[]);
   const renderLabel = () => {
     if (selectedProduct !== null) {

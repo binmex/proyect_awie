@@ -6,11 +6,11 @@ export const ChartRotacion1 = ({tipo}) => {
   const [chartOptions, setChartOptions] = useState({});
   useEffect(() => {
     const data = {
-      labels: ["Q1", "Q2", "Q3", "Q4"],
+      labels: ["1", "2", "3"],
       datasets: [
         {
-          label: "Sales",
-          data: [540, 325, 702, 620],
+          label: "cantidad en stock",
+          data: [47, 32, 7],
           backgroundColor: [
             "rgba(255, 159, 64, 0.2)",
             "rgba(75, 192, 192, 0.2)",
