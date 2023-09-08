@@ -6,9 +6,9 @@ const check = require("../middlewares/auth")
 
 const router = Router();
 //consultar
-router.get("/consultar/:id",getProduct);
+router.get("/consultar/:id",check.auth,getProduct);
 //obtener ID
-router.get("/obtenerid",getIdProducts);
+router.get("/obtenerid",check.auth,getIdProducts);
 //ingresar producto
 router.post("/ingreso",setProduct);
 //actualizar producto

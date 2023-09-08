@@ -44,7 +44,7 @@ export const RotacionProducto = () => {
               <ChartRotacion1 tipo='polarArea'/>
             </div>
             <div className="boxChart">
-            <ChartRotacion1 tipo='radar'/>
+              <ChartRotacion1 tipo='radar'/>
             </div>
           </div>
         </div>

@@ -9,7 +9,7 @@ const secret = libjwt.secret;
 //funcion de autenticacion
 exports.auth = (req, res, next) => {
   //comprobara si llega la cabecera de autenticacion
-  console.log("valor ennn"+req.headers.authorization)
+  //console.log("valor ennn"+req.headers.authorization)
   if (!req.headers.authorization) {
     return res.status(403).send({
       status: "error",
@@ -22,7 +22,6 @@ exports.auth = (req, res, next) => {
   try {
     let payload = jwt.decode(token, secret);
 
-    console.log(payload)
     //comprobar expiracion
     if (payload.exp <= moment().unix()) {
       return res.status(404).send({
