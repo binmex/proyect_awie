@@ -84,7 +84,7 @@ export const ModItem = () => {
           <div className="inputAdd">
           <span className="pi pi-dollar"></span>
             <label>Compra: </label>
-            <InputNumber inputId="integeronly" value={renderLabel().purchase_price} onChangeCapture={(e)=>setCompra(e.value)}/>
+            <InputNumber inputId="integeronly" value={renderLabel().purchase_price} onChange={(e)=>setCompra(e.value)}/>
           </div>
           <div className="inputAdd">
           <span className="pi pi-dollar"></span>

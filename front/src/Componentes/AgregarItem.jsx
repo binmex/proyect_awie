@@ -43,7 +43,7 @@ export const AgregarItem = () => {
     setCompra("");
     setVenta("");
     setCantidad("");
-    console.log(name, cantidad, compra, compra, venta);
+    console.log(name, cantidad, compra, venta);
   };
   return (
     <div className="contenido">

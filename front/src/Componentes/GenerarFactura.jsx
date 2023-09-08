@@ -9,6 +9,8 @@ export const GenerarFactura = () => {
   const [target, setTarget] = useState([]);
   const [total, setTotal] = useState(0);
   const [quantities, setQuantities] = useState({});
+  const [montoPagado, setMontoPagado] = useState(0);
+  const [cambio, setCambio] = useState(0);
 
   
 
@@ -59,6 +61,16 @@ export const GenerarFactura = () => {
       // Devuelve el nuevo estado
     });
   };
+  useEffect(() => {
+    // Calcular el nuevo total basado en quantities
+    const selectedItemsTotal = target.reduce(
+      (acc, item) => acc + item.selling_price * (quantities[item.id_producto] || 1),
+      0
+    );
+  
+    // Actualizar el estado de total
+    setTotal(selectedItemsTotal);
+  }, [quantities, target]);
  
 
   const simularPago = ()=>{
@@ -122,9 +134,22 @@ export const GenerarFactura = () => {
         <div className="ImputsGenerar">
           <div className="inputWrapper">
             <label style={{ fontWeight: "bold" }}>Pago:</label>
-            <InputNumber inputId="integeronly" />
+            <InputNumber
+  value={montoPagado}
+  onValueChange={(e) => {
+    setMontoPagado(e.value);
+    // Calcular el cambio en tiempo real
+    const cambioCalculado = e.value - total;
+    setCambio(cambioCalculado);
+  }}
+  mode="decimal"
+  showButtons
+  min={0}
+ // Ajusta este valor según tus necesidades
+  placeholder="Monto pagado"
+/>
             <label style={{ fontWeight: "bold" }}> Total: ${total}</label>
-            <label style={{ fontWeight: "bold" }}>Cambio: XXXXX</label>
+            <label style={{ fontWeight: "bold" }}>Cambio: ${cambio}</label>
           </div>
           <Button label="Pagar" severity="success" onClick={()=>simularPago()}/>
         </div>
