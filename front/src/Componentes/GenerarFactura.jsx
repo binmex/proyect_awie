@@ -81,7 +81,7 @@ export const GenerarFactura = () => {
     }));
     axios.post(`http://localhost:4000/api/ventas/addventa`,ventas).then((res) => {
         alert("Venta añadida");
-      }).catch((error)=>console.error(error));
+      }).catch((error)=>alert("cantidad insuficiente de producto"+error));
   }
 
   const itemTemplate = (item) => {

@@ -74,7 +74,7 @@ exports.addVenta = async (req,res) => {
       const [rows] = await pool.query(
         "INSERT INTO venta (product_id,invoice_id,quantity_sell,value_sold) VALUES ( ?,?,?,?)",
     
-        [ params[index].product_id,row.insertId,params[index].quantity_sell,params[index].selling_price]
+        [ params[index].product_id,row.insertId,params[index].quantity_sell,params[index].selling_price*params[index].quantity_sell]
       );
       if (rows.length <= 0) {
         return res.status(404).json({ message: "Venta no creada" });

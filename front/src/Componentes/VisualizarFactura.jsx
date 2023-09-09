@@ -17,6 +17,7 @@ export const VisualizarFactura = () => {
       };
     axios.get(`http://localhost:4000/api/ventas/visualizar/${factura}`,config)
     .then((res) => {
+      console.log(res.data)
       setProducts(res.data);
     })
     .catch((error) => {
