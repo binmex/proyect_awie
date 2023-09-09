@@ -37,19 +37,18 @@ exports.getRotacion = async (req, res) => {
   
       // Consulta SQL para calcular la rentabilidad por unidad en el período de tiempo especificado
       const consultaSQL = `
-        SELECT
-          SUM(v.quantity_sell * p.selling_price) AS Ingresos,
-          SUM(v.quantity_sell * p.purchase_price) AS Costos
-        FROM
-          Producto p
-        JOIN
-          Venta v ON p.id_producto = v.product_id
-        JOIN
-          Factura f ON v.invoice_id = f.id_invoice
-        WHERE
-          p.id_producto = ?
-          AND f.date_of_sell >= ?
-          AND f.date_of_sell <= ?
+      SELECT
+      SUM(v.quantity_sell * p.selling_price) AS Ingresos,
+      SUM(v.quantity_sell * p.purchase_price) AS Costos
+    FROM
+      Producto p
+    JOIN
+      Venta v ON p.id_producto = v.product_id
+    JOIN
+      Factura f ON v.invoice_id = f.id_invoice
+    WHERE
+      p.id_producto = ?
+      AND f.date_of_sell  BETWEEN ? AND ?;
       `;
       const valores = [id, dateInit, dateEnd];
       const consultaFechaVentaSQL = `
