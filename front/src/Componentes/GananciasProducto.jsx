@@ -98,28 +98,50 @@ export const GananciasProducto = () => {
               />
           </div>
           <div className="boxInputGanancias">
-            <div className="boxDato">
+            <div className="boxDato fechas">
+            <div className="infoBox">
             <label>Rentabilidad Por Unidad</label>
               <p>{rentabilidadUnidad}</p>
             </div>
-            <div className="boxDato">
+            <span
+                className="pi pi-calendar"
+                style={{ fontSize: "30px", color: "white" }}
+              ></span>
+               </div>
+            <div className="boxDato fechas">
+            <div className="infoBox">
             <label>Ganancia Neta</label>
               <p>{gananciaNeta}</p>
             </div>
-            <div className="boxDato">
+            <span
+                className="pi pi-calendar"
+                style={{ fontSize: "30px", color: "white" }}
+              ></span>
+               </div>
+            <div className="boxDato fechas">
+            <div className="infoBox">
             <label>Inversion</label>
               <p>{inversion}</p>
             </div>
-            <div className="boxDato">
+            <span
+                className="pi pi-calculator"
+                style={{ fontSize: "30px", color: "white" }}
+              ></span>
+               </div>
+            <div className="boxDato fechas">
+            <div className="infoBox">
             <label>Fecha de mayor venta</label>
               <p>{fechaMayor}</p>
             
             </div>
+            <span
+                className="pi pi-calculator"
+                style={{ fontSize: "30px", color: "white" }}
+              ></span>
+              </div>
             <div className="boxChart" id="bigChart">
               <ChartRotacion1 tipo='polarArea'/>
             </div>
-            <div className="boxDato"></div>
-            <div className="boxDato"></div>
             <div className="boxChart">
               <ChartRotacion1 tipo='bar' />
             </div>
@@ -127,5 +149,6 @@ export const GananciasProducto = () => {
         </div>
       </div>
     </div>
+    
   );
 };
