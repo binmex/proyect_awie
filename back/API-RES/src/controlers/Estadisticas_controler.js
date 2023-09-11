@@ -37,9 +37,9 @@ exports.getRotacion = async (req, res) => {
   
       // Consulta SQL para calcular la rentabilidad por unidad en el período de tiempo especificado
       const consultaSQL = `
-      SELECT
-      SUM(v.quantity_sell * p.selling_price) AS Ingresos,
-      SUM(v.quantity_sell * p.purchase_price) AS Costos
+      SELECT COALESCE(
+      SUM(v.quantity_sell * p.selling_price),0) AS Ingresos,COALESCE(
+      SUM(v.quantity_sell * p.purchase_price),0) AS Costos
     FROM
       Producto p
     JOIN
@@ -52,10 +52,10 @@ exports.getRotacion = async (req, res) => {
       `;
       const valores = [id, dateInit, dateEnd];
       const consultaFechaVentaSQL = `
-      SELECT
-      product_id,
-      date_of_movement,
-      SUM(quantity_stock) AS Total_Vendido
+      SELECT COALESCE(
+      product_id,0),COALESCE (
+      date_of_movement,'0000-00-00') AS FechaMax,COALESCE(
+      SUM(quantity_stock) ,0)AS Total_Vendido
   FROM
       StockMovimiento
   WHERE
@@ -69,22 +69,29 @@ exports.getRotacion = async (req, res) => {
       Total_Vendido DESC
   LIMIT 1
   `;
+  const [cantVendida] = await pool.query(
+    "SELECT COALESCE(SUM(quantity_stock), 0) as cantidadVen FROM stockmovimiento WHERE date_of_movement BETWEEN ? AND ? AND movement_type = 'salida' AND product_id = ?",
+    [dateInit,dateEnd,id]
+  );
   
-  
-      const valores1 = [dateInit, dateEnd];
-  
-      const resultado = await pool.query(consultaSQL, valores);
-  
+      
+      const [resultado] = await pool.query(consultaSQL, valores);
+       console.log(resultado[0].Ingresos)
+       console.log(resultado[0].Costos)
+       console.log(cantVendida[0].cantidadVen)
       // Realiza los cálculos necesarios para obtener la rentabilidad por unidad
-      const ingresos = resultado.rows[0].ingresos;
-      const costos = resultado.rows[0].costos;
-      const gananciaNeta=(ingresos - costos)
-      const rentabilidadPorUnidad = (ingresos - costos) / cantidadVendida;
-      const resultadoFechaVenta = await pool.query(consultaFechaVentaSQL, valores);
-    const fechaMayorVenta = resultadoFechaVenta.rows[0].date_of_movement;
+      const ingresos = resultado[0].Ingresos;
+      const inversion = resultado[0].Costos;
+      const gananciaNeta=(ingresos - inversion)
+      const cantidad=cantVendida[0].cantidadVen;
+      const rentabilidadUnidad = (ingresos - inversion) /cantidad;
+      console.log(rentabilidadUnidad)
+      const [resultadoFechaVenta ]= await pool.query(consultaFechaVentaSQL, valores);
+      console.log(resultadoFechaVenta[0].FechaMax)
+      const fechaMayor =resultadoFechaVenta[0].FechaMax ;
       
     
-      res.json({ rentabilidadPorUnidad ,gananciaNeta,costos,fechaMayorVenta});
+      res.json({ rentabilidadUnidad ,gananciaNeta,inversion,fechaMayor});
       
     } catch (error) {
       return res.status(500).json({ message: "something goes wrong: "+error });

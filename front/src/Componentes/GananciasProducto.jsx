@@ -14,6 +14,7 @@ export const GananciasProducto = () => {
   const [gananciaNeta, setGananciaNeta] = useState(0);
   const [inversion, setInversion] = useState(0);
   const [fechaMayor, setFechaMayor] = useState(null);
+  
   const options = { year: "2-digit", month: "2-digit", day: "2-digit" };
   //logica del negocio
   useEffect(() => {
@@ -45,13 +46,17 @@ export const GananciasProducto = () => {
 
   const  aceptFunction = ()=>{
     //alert(convertirFecha(date1)+" "+date2.toLocaleDateString("en-US",options)+" "+selectedProduct.id)
-    axios.get(`http://localhost:4000/api/estadisticas/ganancia/${selectedProduct.id_producto}/${convertirFecha(date1)}/${convertirFecha(date2)}`).then((res)=>{
+    axios.get(`http://localhost:4000/api/estadisticas/ganancia/${selectedProduct.id_producto}/${convertirFecha(date1)}/${convertirFecha(date2)}`)
+    .then((res)=>{
+
       setRentabilidadUnidad(res.data.rentabilidadUnidad)
       setGananciaNeta(res.data.gananciaNeta)
       setInversion(res.data.inversion)
       setFechaMayor(res.data.fechaMayor)
-    }).catch(error=>console.log(error))
-  }
+    })
+    
+    .catch(error=>console.log(error))
+  };
   return (
     <div className="contenido">
       <div className="cajaGanancias">
