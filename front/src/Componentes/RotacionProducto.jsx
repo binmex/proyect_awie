@@ -3,8 +3,7 @@ import { Calendar } from "primereact/calendar";
 import { Dropdown } from "primereact/dropdown";
 import { ChartRotacion1 } from "./chart/ChartRotacion1";
 import { Button } from "primereact/button";
-import axios from 'axios';
-
+import axios from "axios";
 
 export const RotacionProducto = () => {
   const [selectedProduct, setSelectProduct] = useState(null);
@@ -42,19 +41,26 @@ export const RotacionProducto = () => {
     var day = ("0" + fecha.getDate()).slice(-2);
     // Crear la cadena en el nuevo formato YY-MM-DD
     var fechaFormateada = year + "-" + month + "-" + day;
-  
+
     return fechaFormateada;
   }
 
-  const  aceptFunction = ()=>{
+  const aceptFunction = () => {
     //alert(convertirFecha(date1)+" "+date2.toLocaleDateString("en-US",options)+" "+selectedProduct.id)
-    axios.get(`http://localhost:4000/api/estadisticas/rotacion/${selectedProduct.id_producto}/${convertirFecha(date1)}/${convertirFecha(date2)}`).then((res)=>{
-      setCantInicio(res.data.inicio)
-      setCantFin(res.data.fin)
-      setCantSell(res.data.cantidad)
-      setRotacion(res.data.rotacion)
-    }).catch(error=>console.log(error))
-  }
+    axios
+      .get(
+        `http://localhost:4000/api/estadisticas/rotacion/${
+          selectedProduct.id_producto
+        }/${convertirFecha(date1)}/${convertirFecha(date2)}`
+      )
+      .then((res) => {
+        setCantInicio(res.data.inicio);
+        setCantFin(res.data.fin);
+        setCantSell(res.data.cantidad);
+        setRotacion(res.data.rotacion);
+      })
+      .catch((error) => console.log(error));
+  };
 
   return (
     <div className="contenido">
@@ -91,27 +97,53 @@ export const RotacionProducto = () => {
               />
             </div>
             <Button
-                label="Aceptar"
-                severity="success"
-                onClick={() => aceptFunction()}
-              />
+              label="Aceptar"
+              severity="success"
+              onClick={() => aceptFunction()}
+            />
           </div>
           <div className="boxInputRotacion">
-            <div className="boxDato">
-              <label>Inicio</label>
-              <p>{cantInicio}</p>
+            <div className="boxDato fechas">
+              <div className="infoBox">
+                <label>Inicio del periodo</label>
+                <p>{cantInicio}</p>
+              </div>
+              <span
+                className="pi pi-calendar"
+                style={{ fontSize: "30px", color: "white" }}
+              ></span>
             </div>
-            <div className="boxDato">
-            <label>Fin</label>
-              <p>{cantFin}</p>
+            <div className="boxDato fechas">
+              <div className="infoBox">
+                <label>Fin del periodo</label>
+                <p>{cantFin}</p>
+              </div>
+              <span
+                className="pi pi-calendar"
+                style={{ fontSize: "30px", color: "white" }}
+              ></span>
             </div>
-            <div className="boxDato">
-            <label>cantidad</label>
-              <p>{cantSell}</p>
+            <div className="boxDato fechas">
+              <div className="infoBox">
+                <label>cantidad vendida</label>
+                <p>{cantSell}</p>
+              </div>
+
+              <span
+                className="pi pi-calculator"
+                style={{ fontSize: "30px", color: "white" }}
+              ></span>
             </div>
-            <div className="boxDato">
-            <label>Rotacion</label>
-              <p>{rotacion}</p>
+            <div className="boxDato fechas">
+              <div className="infoBox">
+                <label>Rotacion</label>
+                <p>{rotacion}</p>
+              </div>
+
+              <span
+                className="pi pi-sort-alt"
+                style={{ fontSize: "30px", color: "white" }}
+              ></span>
             </div>
             <div className="boxChart">
               <ChartRotacion1 tipo="bar" />
