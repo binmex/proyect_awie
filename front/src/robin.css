@@ -1,13 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
 
-:root{
-  --fontLogo: 'Dancing Script', cursive;
-  --fontDefault: 'Noto Sans', sans-serif;
+:root {
+  --fontLogo: "Dancing Script", cursive;
+  --fontDefault: "Noto Sans", sans-serif;
   --crema: #f5e5c1;
-  --cafe: #5D4717;
-  --cafeClaro: #AF8155;
-  --cafeSemiOscuro: #976F49;
+  --cafe: #5d4717;
+  --cafeClaro: #af8155;
+  --cafeSemiOscuro: #976f49;
   --cafeOscuro: #342609;
 }
 .contenido {
@@ -19,8 +19,9 @@
   align-items: center;
   justify-content: flex-start;
 }
-.cajaAgregar,.cajaRotacion,.cajaGanancias
-{
+.cajaAgregar,
+.cajaRotacion,
+.cajaGanancias {
   height: auto;
   width: 85%;
   border-radius: 2rem;
@@ -37,55 +38,54 @@
 .cajaRotacion h3,
 .cajaAgregar h3,
 .cajaGanancias h3,
-.cajaTablaVista h3{
-    font-family: var(--fontDefault);
-    color: var(--cafeOscuro);
-    text-align: center;
-    font-weight: bolder;
+.cajaTablaVista h3 {
+  font-family: var(--fontDefault);
+  color: var(--cafeOscuro);
+  text-align: center;
+  font-weight: bolder;
 }
-.boxInput{
+.boxInput {
   height: 85%;
   width: 95%;
   display: grid;
   grid-template-rows: repeat(4, 1fr); /* Divide en 4 filas de tamaño igual */
-  grid-template-columns: repeat(2, 1fr); /* Divide en 2 columnas de tamaño igual */
-  
+  grid-template-columns: repeat(
+    2,
+    1fr
+  ); /* Divide en 2 columnas de tamaño igual */
 }
-.boxInput > *{
+.boxInput > * {
   height: 100%;
   width: 100%;
 }
 
-.boxInput .inputAdd{
-    margin-left: 1.5rem;
-    margin-top: 2rem;
-
-    
+.boxInput .inputAdd {
+  margin-left: 1.5rem;
+  margin-top: 2rem;
 }
-.boxInput .inputAdd label{
-    font-family: var(--fontDefault);
-    max-width: 400;
-    min-width: 100;
-    margin-right: 1rem;
-
+.boxInput .inputAdd label {
+  font-family: var(--fontDefault);
+  max-width: 400;
+  min-width: 100;
+  margin-right: 1rem;
 }
-.boxInput #boxButtonAdd{
+.boxInput #boxButtonAdd {
   text-align: end;
   grid-column: 2;
 }
-.boxInput #boxButtonAdd button{
+.boxInput #boxButtonAdd button {
   margin-right: 2.5rem;
 }
 
 /*Modulo de rotacion*/
 .contentRotacion,
-.contentGanancias{
+.contentGanancias {
   width: 90%;
   height: auto;
   display: flex;
   flex-direction: column;
 }
-.rotacionDivNav{
+.rotacionDivNav {
   height: 20%;
   width: 100%;
   display: flex;
@@ -94,31 +94,48 @@
   justify-content: space-between;
   margin-bottom: 1rem;
 }
-.contentNav{
+.contentNav {
   margin-left: 0.5rem;
   margin-right: 0.8rem;
 }
-.boxInputRotacion{
+.boxInputRotacion {
   display: grid;
   width: 100%;
   height: auto;
-  grid-template-columns: repeat(2, 1fr); /* Divide en 2 columnas de tamaño igual */
+  grid-template-columns: repeat(
+    2,
+    1fr
+  ); /* Divide en 2 columnas de tamaño igual */
 }
-.boxDato,.boxChart{ 
+.boxDato,
+.boxChart {
   display: flex;
   align-items: center; /* Alineación vertical al centro */
   justify-content: center; /* Alineación horizontal al centro */
   margin: 0.5rem;
 }
-.boxDato{
+.boxDato {
   min-height: 6rem;
-  box-shadow: 9px 8px 22px -1px rgba(0,0,0,0.04);
--webkit-box-shadow: 9px 8px 22px -1px rgba(0,0,0,0.04);
--moz-box-shadow: 9px 8px 22px -1px rgba(0,0,0,0.04);
-border-radius: 1.5rem;
+  box-shadow: 9px 8px 22px -1px rgba(0, 0, 0, 0.04);
+  -webkit-box-shadow: 9px 8px 22px -1px rgba(0, 0, 0, 0.04);
+  -moz-box-shadow: 9px 8px 22px -1px rgba(0, 0, 0, 0.04);
+  border-radius: 1.5rem;
+  justify-content: space-between;
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
 }
+.fechas{
+  background-color: #3AC138;
+}
+.infoBox {
+  font-family: var(--fontDefault);
+  font-size: larger;
+  width: 60%;
+  align-items: center;
+  color: white;
+}
+
 /*Ganancias*/
-.gananciasDivNav{
+.gananciasDivNav {
   height: 20%;
   width: 100%;
   display: flex;
@@ -126,14 +143,14 @@ border-radius: 1.5rem;
   align-content: center;
   justify-content: space-around;
 }
-.boxInputGanancias{
+.boxInputGanancias {
   display: grid;
   width: 100%;
   height: auto;
   grid-template-rows: repeat(3, 1fr); /* Divide en 3 filas de tamaño igual */
   margin: 2rem 0 1rem 0;
 }
-#bigChart{
+#bigChart {
   grid-row-start: 1;
   grid-row-end: 3;
   grid-column: 2;
@@ -151,7 +168,7 @@ border-radius: 1.5rem;
   flex-direction: column;
   align-items: center; /* Alineación vertical al centro */
   justify-content: initial; /* Alineación horizontal al centro */
-  margin: 2rem 0 2rem 0 ;
+  margin: 2rem 0 2rem 0;
   padding-bottom: 2rem;
 }
 
@@ -163,22 +180,22 @@ border-radius: 1.5rem;
   flex-grow: 1; /* Asegura el crecimiento vertical */
 }
 
-.vistaVentasDivNav{
+.vistaVentasDivNav {
   height: 20%;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
-  justify-content:center;
+  justify-content: center;
   gap: 2rem;
 }
-.cardTableView{
-  margin: 1.5rem 0 1.5rem 0 ;
+.cardTableView {
+  margin: 1.5rem 0 1.5rem 0;
 }
-.boxTableView{
+.boxTableView {
   text-align: end;
 }
-.boxTableView label{
+.boxTableView label {
   margin-right: 2rem;
   font-family: var(--fontDefault);
   font-weight: bold;
