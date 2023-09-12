@@ -105,7 +105,7 @@ export const RotacionProducto = () => {
           <div className="boxInputRotacion">
             <div className="boxDato fechas">
               <div className="infoBox">
-                <label>Inicio del periodo</label>
+                <label>Existencias en el periodo de inicio</label>
                 <p>{cantInicio}</p>
               </div>
               <span
@@ -115,7 +115,7 @@ export const RotacionProducto = () => {
             </div>
             <div className="boxDato fechas">
               <div className="infoBox">
-                <label>Fin del periodo</label>
+                <label>Existencias en el fin del periodo</label>
                 <p>{cantFin}</p>
               </div>
               <span
@@ -123,9 +123,9 @@ export const RotacionProducto = () => {
                 style={{ fontSize: "30px", color: "white" }}
               ></span>
             </div>
-            <div className="boxDato fechas">
+            <div className={cantSell < 1 ? "boxDato dataBad" : "boxDato cantidad"}>
               <div className="infoBox">
-                <label>cantidad vendida</label>
+                <label>Cantidad vendida</label>
                 <p>{cantSell}</p>
               </div>
 
@@ -134,7 +134,7 @@ export const RotacionProducto = () => {
                 style={{ fontSize: "30px", color: "white" }}
               ></span>
             </div>
-            <div className="boxDato fechas">
+            <div className={rotacion < 1 ? "boxDato dataBad" : "boxDato rotacionGod"} >
               <div className="infoBox">
                 <label>Rotacion</label>
                 <p>{rotacion}</p>
@@ -157,5 +157,3 @@ export const RotacionProducto = () => {
     </div>
   );
 };
-
-
