@@ -200,3 +200,16 @@
   font-family: var(--fontDefault);
   font-weight: bold;
 }
+.fechas{
+  background-color: #3AC138;
+  background-color: #0E82CD;
+}
+.cantidad{
+  background-color: #E2BB0C;
+}
+.rotacionGod{
+  background-color: #0DC12B;
+}
+.dataBad{
+  background-color: #C1120D;
+}
