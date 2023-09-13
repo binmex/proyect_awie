@@ -14,8 +14,6 @@ export const RotacionProducto = () => {
   const [cantFin, setCantFin] = useState(0);
   const [cantSell, setCantSell] = useState(0);
   const [rotacion, setRotacion] = useState(0);
-
-  const options = { year: "2-digit", month: "2-digit", day: "2-digit" };
   //logica del negocio
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("login"));
@@ -146,10 +144,7 @@ export const RotacionProducto = () => {
               ></span>
             </div>
             <div className="boxChart">
-              <ChartRotacion1 tipo="bar" />
-            </div>
-            <div className="boxChart">
-              <ChartRotacion1 tipo="radar" />
+              <ChartRotacion1 tipo="bar" cantInicio={cantInicio} cantFin={cantFin} date1={date1} date2={date2}/> 
             </div>
           </div>
         </div>

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Calendar } from "primereact/calendar";
 import { Dropdown } from "primereact/dropdown";
-import { ChartRotacion1 } from "./chart/ChartRotacion1";
 import { Button } from "primereact/button";
 import axios from 'axios';
+import { ChartGanancias } from "./chart/ChartGanancias";
 
 export const GananciasProducto = () => {
   const [selectedProduct, setSelectProduct] = useState(null);
@@ -140,10 +140,10 @@ export const GananciasProducto = () => {
               ></span>
               </div>
             <div className="boxChart" id="bigChart">
-              <ChartRotacion1 tipo='polarArea'/>
+              <ChartGanancias tipo='polarArea'/>
             </div>
             <div className="boxChart">
-              <ChartRotacion1 tipo='bar' />
+              <ChartGanancias tipo='bar' />
             </div>
           </div>
         </div>
