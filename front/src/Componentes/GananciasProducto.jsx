@@ -4,6 +4,7 @@ import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
 import axios from 'axios';
 import { ChartGanancias } from "./chart/ChartGanancias";
+import { ChartRotacion1 } from "./chart/ChartRotacion1";
 
 
 export const GananciasProducto = () => {
@@ -136,7 +137,7 @@ export const GananciasProducto = () => {
               <ChartGanancias tipo='polarArea'/>
             </div>
             <div className="boxChart">
-              <ChartGanancias tipo='bar' />
+              <ChartGanancias tipo='bar' inversion={inversion} gananciaNeta={gananciaNeta}  date1={date1} date2={date2}/>
             </div>
             <div className="boxDato fechas">
             <div className="infoBox">

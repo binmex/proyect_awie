@@ -2,16 +2,37 @@ import React, { useState, useEffect } from "react";
 import { Chart } from "primereact/chart";
 
 
-export const ChartGanancias = ({tipo}) => {
+export const ChartGanancias = ({tipo,inversion,gananciaNeta,date1, date2}) => {
     const [chartData, setChartData] = useState({});
     const [chartOptions, setChartOptions] = useState({});
     useEffect(() => {
+      const concatenatedDate ="inicio: "+ convertirFecha(date1) + " | " +
+       " fin: "+convertirFecha(date2);
       const data = {
-        labels: ["dato1", "dato2"],
+        labels: [concatenatedDate],
         datasets: [
           {
-            label: "cantidad en stock",
-            data: [5,10],
+            label: "inversion",
+            data: [inversion],
+            
+            backgroundColor: [
+              "rgba(255, 159, 64, 0.2)",
+              "rgba(75, 192, 192, 0.2)",
+              "rgba(54, 162, 235, 0.2)",
+              "rgba(153, 102, 255, 0.2)",
+            ],
+            borderColor: [
+              "rgb(255, 159, 64)",
+              "rgb(75, 192, 192)",
+              "rgb(54, 162, 235)",
+              "rgb(153, 102, 255)",
+            ],
+            borderWidth: 1,
+          },
+          {
+            label: "ganancia",
+            data: [gananciaNeta],
+            
             backgroundColor: [
               "rgba(255, 159, 64, 0.2)",
               "rgba(75, 192, 192, 0.2)",
@@ -39,7 +60,7 @@ export const ChartGanancias = ({tipo}) => {
   
       setChartData(data);
       setChartOptions(options);
-    }, []);
+    }, [inversion]);
   
     function convertirFecha(fechaOriginal) {
       // Parsear la fecha en formato original
