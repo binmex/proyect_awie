@@ -141,14 +141,18 @@
   display: flex;
   flex-wrap: wrap;
   align-content: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+
 }
 .boxInputGanancias {
   display: grid;
   width: 100%;
   height: auto;
-  grid-template-rows: repeat(3, 1fr); /* Divide en 3 filas de tamaño igual */
-  margin: 2rem 0 1rem 0;
+  grid-template-columns: repeat(
+    2,
+    1fr
+  );
 }
 #bigChart {
   grid-row-start: 1;
