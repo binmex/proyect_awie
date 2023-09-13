@@ -146,6 +146,9 @@ export const RotacionProducto = () => {
             <div className="boxChart">
               <ChartRotacion1 tipo="bar" cantInicio={cantInicio} cantFin={cantFin} date1={date1} date2={date2}/> 
             </div>
+            <div className="boxChart">
+              <ChartRotacion1 tipo="line" cantInicio={cantInicio} cantFin={cantFin} date1={date1} date2={date2}/> 
+            </div>
           </div>
         </div>
       </div>
