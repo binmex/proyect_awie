@@ -13,7 +13,7 @@ export const GananciasProducto = () => {
   const [rentabilidadUnidad, setRentabilidadUnidad] = useState(0);
   const [gananciaNeta, setGananciaNeta] = useState(0);
   const [inversion, setInversion] = useState(0);
-  const [fechaMayor, setFechaMayor] = useState(null);
+  const [fechaMayor, setFechaMayor] = useState('0000-00-00');
   
   const options = { year: "2-digit", month: "2-digit", day: "2-digit" };
   //logica del negocio
@@ -59,9 +59,9 @@ export const GananciasProducto = () => {
   };
   return (
     <div className="contenido">
-      <div className="cajaGanancias">
+      <div className="cajaRotacion">
         <h3>GANANCIAS</h3>
-        <div className="contentGanancias">
+        <div className="contentRotacion">
           <div className="gananciasDivNav">
           <div className="contentNav">
               <Dropdown
@@ -97,24 +97,26 @@ export const GananciasProducto = () => {
                 onClick={() => aceptFunction()}
               />
           </div>
-          <div className="boxInputGanancias">
-            <div className="boxDato fechas">
+          <div className="boxInputRotacion">
+          <div className="boxDato fechas">
             <div className="infoBox">
-            <label>Rentabilidad Por Unidad</label>
-              <p>{rentabilidadUnidad}</p>
+            <label>Fecha de mayor venta</label>
+              <p>{fechaMayor}</p>
+            
             </div>
             <span
                 className="pi pi-calendar"
                 style={{ fontSize: "30px", color: "white" }}
               ></span>
-               </div>
+              </div>
+           
             <div className="boxDato fechas">
             <div className="infoBox">
             <label>Ganancia Neta</label>
               <p>{gananciaNeta}</p>
             </div>
             <span
-                className="pi pi-calendar"
+                className="pi pi-dollar"
                 style={{ fontSize: "30px", color: "white" }}
               ></span>
                </div>
@@ -137,15 +139,14 @@ export const GananciasProducto = () => {
             </div>
             <div className="boxDato fechas">
             <div className="infoBox">
-            <label>Fecha de mayor venta</label>
-              <p>{fechaMayor}</p>
-            
+            <label>Rentabilidad Por Unidad</label>
+              <p>{rentabilidadUnidad}</p>
             </div>
             <span
-                className="pi pi-calculator"
+                className="pi pi-dollar"
                 style={{ fontSize: "30px", color: "white" }}
               ></span>
-              </div>
+               </div>
           </div>
         </div>
       </div>
