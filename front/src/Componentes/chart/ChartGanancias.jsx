@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import { Chart } from "primereact/chart";
 
-export const ChartGanancias = () => {
+
+export const ChartGanancias = ({tipo}) => {
     const [chartData, setChartData] = useState({});
     const [chartOptions, setChartOptions] = useState({});
     useEffect(() => {
@@ -37,7 +39,7 @@ export const ChartGanancias = () => {
   
       setChartData(data);
       setChartOptions(options);
-    }, [cantFin]);
+    }, []);
   
     function convertirFecha(fechaOriginal) {
       // Parsear la fecha en formato original
