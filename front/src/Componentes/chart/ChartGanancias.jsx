@@ -15,37 +15,17 @@ export const ChartGanancias = ({tipo,inversion,gananciaNeta,date1, date2}) => {
             label: "inversion",
             data: [inversion],
             
-            backgroundColor: [
-              "rgba(255, 159, 64, 0.2)",
-              "rgba(75, 192, 192, 0.2)",
-              "rgba(54, 162, 235, 0.2)",
-              "rgba(153, 102, 255, 0.2)",
-            ],
-            borderColor: [
-              "rgb(255, 159, 64)",
-              "rgb(75, 192, 192)",
-              "rgb(54, 162, 235)",
-              "rgb(153, 102, 255)",
-            ],
-            borderWidth: 1,
+            backgroundColor: ["rgba(255, 0, 0, 0.2)"],// Color verde con opacidad
+          borderColor: ["rgb(255, 0, 0))"], 
+         
           },
           {
             label: "ganancia",
             data: [gananciaNeta],
             
-            backgroundColor: [
-              "rgba(255, 159, 64, 0.2)",
-              "rgba(75, 192, 192, 0.2)",
-              "rgba(54, 162, 235, 0.2)",
-              "rgba(153, 102, 255, 0.2)",
-            ],
-            borderColor: [
-              "rgb(255, 159, 64)",
-              "rgb(75, 192, 192)",
-              "rgb(54, 162, 235)",
-              "rgb(153, 102, 255)",
-            ],
-            borderWidth: 1,
+            backgroundColor: ["rgba(0, 255, 0, 0.2)"], // Color rojo con opacidad
+          borderColor: ["rgb(0, 255, 0)"], 
+         
           },
         ],
       };
