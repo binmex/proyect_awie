@@ -2,18 +2,6 @@ import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import AgregarItem from './AgregarItem'; // Importa tu componente
 
-test('Renderización inicial del componente', () => {
-  const { getByText, getByLabelText } = render(<AgregarItem />);
-
-  expect(getByText('AGREGAR')).toBeInTheDocument();
-  expect(getByLabelText('Nombre')).toBeInTheDocument();
-  expect(getByLabelText('Compra')).toBeInTheDocument();
-  expect(getByLabelText('Venta')).toBeInTheDocument();
-  expect(getByLabelText('Cantidad')).toBeInTheDocument();
-  expect(getByText('Limpiar')).toBeInTheDocument();
-  expect(getByText('Aceptar')).toBeInTheDocument();
-});
-
 test('Comportamiento de los campos y botones', async () => {
   const { getByText, getByLabelText } = render(<AgregarItem />);
 

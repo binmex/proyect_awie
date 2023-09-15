@@ -1,32 +1,50 @@
-import React, { useState } from 'react'
-import { InputNumber } from 'primereact/inputnumber';
-import { Button } from 'primereact/button';
-import { VistaTabla } from './Tables/VistaTabla';
-import axios from 'axios';
+import React, { useState } from "react";
+import { InputNumber } from "primereact/inputnumber";
+import { Button } from "primereact/button";
+import { VistaTabla } from "./Tables/VistaTabla";
+import axios from "axios";
 
 export const VisualizarFactura = () => {
-  const [factura,setFactura] = useState(0);
+  const [factura, setFactura] = useState(0);
   const [products, setProducts] = useState([]);
-  
-  const searchFactura = () => {  
-    const token = JSON.parse(localStorage.getItem("login"));
-    const config = {
-        headers:{
-            Authorization: token
-        }
+
+  const searchFactura = () => {
+    console.log(factura);
+    console.log(typeof factura);
+    if (factura == null) {
+      console.log("entro");
+      const token = JSON.parse(localStorage.getItem("login"));
+      const config = {
+        headers: {
+          Authorization: token,
+        },
       };
-    axios.get(`http://localhost:4000/api/ventas/visualizar/${factura}`,config)
-    .then((res) => {
-      console.log(res.data)
-      setProducts(res.data);
-    })
-    .catch((error) => {
-      alert('porfavor logueese loca')
-      console.error(error);
-    });
-  }
-  
-  
+      axios
+        .get("http://localhost:4000/api/ventas/visualizar", config)
+        .then((res) => {
+          setProducts(res.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+      // eslint-disable-next-line
+    } else {
+      const token = JSON.parse(localStorage.getItem("login"));
+      const config = {
+        headers: {
+          Authorization: token,
+        },
+      };
+      axios
+        .get(`http://localhost:4000/api/ventas/visualizar/${factura}`, config)
+        .then((res) => {
+          setProducts(res.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  };
 
   return (
     <div className="contenido">
@@ -34,14 +52,18 @@ export const VisualizarFactura = () => {
         <h3>VISUALIZAR FACTURA</h3>
         <div className="contentVistaFactura">
           <div className="vistaVentasDivNav">
-            <InputNumber inputId="integeronly" placeholder='# Factura' onValueChange={e=>setFactura(e.value)}/>
-            <Button label="Buscar" onClick={()=>searchFactura()}/>
+            <InputNumber
+              inputId="integeronly"
+              placeholder="# Factura"
+              onValueChange={(e) => setFactura(e.value)}
+            />
+            <Button label="Buscar" onClick={() => searchFactura()} />
           </div>
           <div className="boxTableView">
-            <VistaTabla products={products} setProducts={setProducts}/>
+            <VistaTabla products={products} setProducts={setProducts} />
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
