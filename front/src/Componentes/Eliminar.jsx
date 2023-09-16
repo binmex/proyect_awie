@@ -67,7 +67,7 @@ export const Eliminar = () => {
               <Message
                 severity="error"
                 text="Eliminado"
-                closable
+                
                 onClose={() => setShowMessage(false)}
               />
             )}

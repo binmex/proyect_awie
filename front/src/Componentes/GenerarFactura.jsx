@@ -13,7 +13,12 @@ export const GenerarFactura = () => {
   const [montoPagado, setMontoPagado] = useState(0);
   const [cambio, setCambio] = useState(0);
   const [showMessage, setShowMessage] = useState(false);
-  
+  const showMessageAlert = () => {
+    setShowMessage(true);
+    setTimeout(() => {
+      setShowMessage(false);
+    }, 5000); // Ocultar el mensaje después de 3 segundos
+  };
 
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("login"));
@@ -82,7 +87,8 @@ export const GenerarFactura = () => {
       selling_price: item.selling_price,
     }));
     axios.post(`http://localhost:4000/api/ventas/addventa`,ventas).then((res) => {
-        alert("Venta añadida");
+        
+        showMessageAlert();
        
       }).catch((error)=>alert("cantidad insuficiente de producto"+error));
   }
@@ -115,6 +121,15 @@ export const GenerarFactura = () => {
     <div className="content">
       <div className="cajaTablaVista">
         <h3>Generar Factura</h3>
+        {showMessage && (
+              <Message
+                severity="success"
+                summary='Success'
+                text="Venta Generada"
+                
+                onClose={() => setShowMessage(false)}
+              />
+            )}
         <div className="contentVistaFactura">
           <div className="card">
             <PickList
