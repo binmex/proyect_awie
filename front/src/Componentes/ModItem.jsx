@@ -4,6 +4,7 @@ import { Button } from "primereact/button";
 import axios from 'axios';
 import { InputText } from "primereact/inputtext";
 import { InputNumber } from "primereact/inputnumber";
+import { Message } from 'primereact/message';
 
 
 
@@ -14,8 +15,14 @@ export const ModItem = () => {
   const [compra, setCompra] = useState(null);
   const [venta, setVenta] = useState(null);
   const [cantidad, setCantidad] = useState(null);
+  const [showMessage, setShowMessage] = useState(false);
 
-  
+  const showMessageAlert = () => {
+    setShowMessage(true);
+    setTimeout(() => {
+      setShowMessage(false);
+    }, 5000); // Ocultar el mensaje después de 3 segundos
+  };
   
   const actualizarFuncion = () => {
     const producto = {
@@ -29,7 +36,7 @@ export const ModItem = () => {
     axios
       .patch(`http://localhost:4000/api/inventario/actualizar/${idFromLabelProduct}`,producto)
       .then((res) => {
-        alert("actualizado");
+        showMessageAlert(); 
       }).catch((error)=>console.error(error));
 
   };
@@ -63,6 +70,14 @@ export const ModItem = () => {
     <div className="content">
       <div className="Modificar">
         <h3>Abastecer</h3>
+        {showMessage && (
+              <Message
+                severity="info"
+                text="Actualizado"
+                closable
+                onClose={() => setShowMessage(false)}
+              />
+            )}
         <div className="boxBorrar">
         <label>ID</label>
             <Dropdown value={selectedProduct} onChange={(e) => setSelectProduct(e.value)} options={data} optionLabel="name_product" 

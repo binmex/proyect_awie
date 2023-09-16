@@ -7,6 +7,8 @@ import { ChartGanancias } from "./chart/ChartGanancias";
 import { ChartGanancias1 } from "./chart/ChartGanancias1";
 
 
+        
+
 
 export const GananciasProducto = () => {
   const [selectedProduct, setSelectProduct] = useState(null);
@@ -17,7 +19,7 @@ export const GananciasProducto = () => {
   const [gananciaNeta, setGananciaNeta] = useState(0);
   const [inversion, setInversion] = useState(0);
   const [fechaMayor, setFechaMayor] = useState('0000-00-00');
-  
+
   const options = { year: "2-digit", month: "2-digit", day: "2-digit" };
   //logica del negocio
   useEffect(() => {

@@ -3,12 +3,20 @@ import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { InputNumber } from "primereact/inputnumber";
 import axios from "axios";
+import { Message } from 'primereact/message';
 
 export const AgregarItem = () => {
   const [name, setName] = useState("");
   const [compra, setCompra] = useState("");
   const [venta, setVenta] = useState("");
   const [cantidad, setCantidad] = useState("");
+  const [showMessage, setShowMessage] = useState(false);
+  const showMessageAlert = () => {
+    setShowMessage(true);
+    setTimeout(() => {
+      setShowMessage(false);
+    }, 5000); // Ocultar el mensaje después de 3 segundos
+  };
 
   const aceptFunction = () => {
     const producto = {
@@ -33,7 +41,8 @@ export const AgregarItem = () => {
     axios
       .post("http://localhost:4000/api/inventario/ingreso",producto,config)
       .then((res) => {
-        alert("agregado");
+        showMessageAlert(); 
+        
       })
       .catch((error) => console.log("falta loguin" + error));
   };
@@ -49,8 +58,17 @@ export const AgregarItem = () => {
     <div className="contenido">
       <div className="cajaAgregar">
         <h3>AGREGAR</h3>
+        {showMessage && (
+              <Message
+                severity="info"
+                text="Agregado"
+                closable
+                onClose={() => setShowMessage(false)}
+              />
+            )}
         <div className="contentRotacion">
           <div className="boxInput">
+         
             <div className="inputAdd">
               <label>Nombre</label>
               <InputText

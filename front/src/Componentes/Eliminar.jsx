@@ -2,11 +2,20 @@ import React, { useState,useEffect } from "react";
 import { Dropdown } from 'primereact/dropdown';
 import { Button } from "primereact/button";
 import axios from 'axios';
+import { Message } from 'primereact/message';
 
 
 export const Eliminar = () => {
   const [selectedProduct, setSelectProduct] = useState(null);
   const [data,setData] = useState([]);
+  const [showMessage, setShowMessage] = useState(false);
+  const showMessageAlert = () => {
+    setShowMessage(true);
+    setTimeout(() => {
+      setShowMessage(false);
+    }, 5000); // Ocultar el mensaje después de 3 segundos
+  };
+  
   const funcionBorrar= () => {
     const token = JSON.parse(localStorage.getItem("login"));
     const config = {
@@ -18,7 +27,7 @@ export const Eliminar = () => {
     axios
       .delete(`http://localhost:4000/api/inventario/eliminar/${idborrar}`,config)
       .then((res) => {
-        alert("borrado");
+        showMessageAlert(); 
       }).catch((error)=>console.error(error));
 
   };
@@ -54,6 +63,14 @@ export const Eliminar = () => {
          <Dropdown value={selectedProduct} onChange={(e) => setSelectProduct(e.value)} options={data} optionLabel="name_product" 
                 placeholder="seleccione el producto" className="w-full md:w-14rem" />
           </div> 
+          {showMessage && (
+              <Message
+                severity="error"
+                text="Eliminado"
+                closable
+                onClose={() => setShowMessage(false)}
+              />
+            )}
           <div className="boxInput">
           <div className="inputAdd">
             <label>ID: </label>

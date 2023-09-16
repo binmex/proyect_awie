@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { Dropdown } from 'primereact/dropdown';
 import axios from 'axios';
+
 export const BuscarItem = () => {
   const [selectedProduct, setSelectProduct] = useState(null);
   const [data,setData] = useState([]);
+  
   useEffect(()=>{
     const token = JSON.parse(localStorage.getItem("login"));
     const config = {
@@ -59,9 +61,7 @@ export const BuscarItem = () => {
             <label>Cantidad:</label>
             <label>{renderLabel().quantity_init}</label>
           </div>
-          <div className="inputAdd">
-            <label>Ingreso:</label>
-          </div>
+          
         
     </div>
     

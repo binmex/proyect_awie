@@ -3,6 +3,7 @@ import { PickList } from "primereact/picklist";
 import { InputNumber } from "primereact/inputnumber";
 import { Button } from "primereact/button";
 import axios from "axios";
+import { Message } from 'primereact/message';
 
 export const GenerarFactura = () => {
   const [source, setSource] = useState([]);
@@ -11,7 +12,7 @@ export const GenerarFactura = () => {
   const [quantities, setQuantities] = useState({});
   const [montoPagado, setMontoPagado] = useState(0);
   const [cambio, setCambio] = useState(0);
-
+  const [showMessage, setShowMessage] = useState(false);
   
 
   useEffect(() => {
@@ -74,6 +75,7 @@ export const GenerarFactura = () => {
  
 
   const simularPago = ()=>{
+    
     const ventas = target.map((item) => ({
       product_id: item.id_producto,
       quantity_sell: quantities[item.id_producto] || 0, // Aquí obtén la cantidad del objeto quantities
@@ -81,6 +83,7 @@ export const GenerarFactura = () => {
     }));
     axios.post(`http://localhost:4000/api/ventas/addventa`,ventas).then((res) => {
         alert("Venta añadida");
+       
       }).catch((error)=>alert("cantidad insuficiente de producto"+error));
   }
 
