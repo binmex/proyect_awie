@@ -15,7 +15,6 @@ export const VistaTabla = ({products,setProducts}) => {
           };
         axios.get('http://localhost:4000/api/ventas/visualizar', config)
     .then((res) => {
-        console.log(res.data)
       setProducts(res.data);
     })
     .catch((error) => {
