@@ -29,7 +29,6 @@ export const Eliminar = () => {
       .then((res) => {
         showMessageAlert(); 
       }).catch((error)=>console.error(error));
-
   };
 
   useEffect(()=>{

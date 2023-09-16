@@ -62,7 +62,6 @@ export const AgregarItem = () => {
               <Message
                 severity="info"
                 text="Agregado"
-                closable
                 onClose={() => setShowMessage(false)}
               />
             )}

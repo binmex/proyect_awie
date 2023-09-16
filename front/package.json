@@ -22,7 +22,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\"",
     "eject": "react-scripts eject"
   },
   
@@ -44,18 +44,6 @@
       "last 1 safari version"
     ]
   },
-  
-"jest": {
-  "transform": {
-    "^.+\\.[jt]sx?$": "babel-jest"
-  },
-  "globals": {
-    "ts-jest": {
-      "babelConfig": true
-    }
-  }
-},
-
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/preset-env": "^7.22.15",

@@ -9,10 +9,7 @@ export const VisualizarFactura = () => {
   const [products, setProducts] = useState([]);
 
   const searchFactura = () => {
-    console.log(factura);
-    console.log(typeof factura);
     if (factura == null) {
-      console.log("entro");
       const token = JSON.parse(localStorage.getItem("login"));
       const config = {
         headers: {
