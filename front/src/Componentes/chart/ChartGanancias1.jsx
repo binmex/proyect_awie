@@ -45,6 +45,7 @@ export const ChartGanancias1 = ({tipo,inversion,gananciaNeta,rentabilidadUnidad}
 
         setChartData(data);
         setChartOptions(options);
+        // eslint-disable-next-line
     }, [inversion]);
 
     return (

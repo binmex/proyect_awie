@@ -46,14 +46,6 @@ export const AgregarItem = () => {
       })
       .catch((error) => console.log("falta loguin" + error));
   };
-
-  const limpiarCampos = () => {
-    setName("");
-    setCompra("");
-    setVenta("");
-    setCantidad("");
-    console.log(name, cantidad, compra, venta);
-  };
   return (
     <div className="contenido">
       <div className="cajaAgregar">
@@ -100,11 +92,6 @@ export const AgregarItem = () => {
               />
             </div>
             <div className="inputAdd button" id="boxButtonAdd">
-              <Button
-                label="Limpiar"
-                severity="warning"
-                onClick={() => limpiarCampos()}
-              />
               <Button
                 label="Aceptar"
                 severity="success"

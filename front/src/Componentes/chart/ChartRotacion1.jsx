@@ -38,6 +38,7 @@ export const ChartRotacion1 = ({tipo,cantInicio, cantFin, date1, date2}) => {
 
     setChartData(data);
     setChartOptions(options);
+    // eslint-disable-next-line
   }, [cantFin]);
 
   function convertirFecha(fechaOriginal) {

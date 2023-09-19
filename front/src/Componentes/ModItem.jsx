@@ -112,7 +112,6 @@ export const ModItem = () => {
           </div>
           
           <div className="inputAdd button">
-            <Button label="Limpiar" severity="warning" />
             <Button label="Actualizar" severity="info"  onClick={()=>actualizarFuncion()} />
           </div>
         </div>

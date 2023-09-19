@@ -40,6 +40,7 @@ export const ChartGanancias = ({tipo,inversion,gananciaNeta,date1, date2}) => {
   
       setChartData(data);
       setChartOptions(options);
+      // eslint-disable-next-line
     }, [inversion]);
   
     function convertirFecha(fechaOriginal) {
